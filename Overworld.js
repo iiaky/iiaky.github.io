@@ -38,18 +38,19 @@ class Overworld {
                 this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
                 // ** DRAWING THE MAPS **
-                this.map.drawLowerImage(this.ctx, 0, 0);
+                //this.map.drawLowerImage(this.ctx, 0, 0);
 
                 Object.values(this.map.gameObjects).forEach(object => {
                     object.update({
-
+                        arrow: this.directionInput.direction // passing in the key that is pressed at that current frame
+                                                             // this is the "state" parameter in the GameObject child class functions
                         
                     })
                     object.sprite.draw(this.ctx);
                 }) // getting values inside the "gameObjects" key-value pair,
                 // then iterating through each object to draw them (accessing the sprite within each gameObject)
 
-                this.map.drawUpperImage(this.ctx, 0, 0);
+                //this.map.drawUpperImage(this.ctx, 0, 0);
             }
         }
         step();
@@ -58,7 +59,9 @@ class Overworld {
     init() {
 
         this.map = new OverworldMap(window.OverworldMaps.blobVillage); // setting a starting map
-        
+        this.directionInput = new DirectionInput(); // instantiating a listener for user input
+        this.directionInput.init() // the method for running it ^
+
         this.then = Date.now();
         this.startTime = this.then;
         this.startGameLoop();

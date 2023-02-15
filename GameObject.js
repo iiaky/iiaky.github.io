@@ -8,7 +8,7 @@ class GameObject {
             gameObject: this,
             src: config.src || "images/characters/average cute blob.png",
             useShadow: config.useShadow
-    });
+        });
     }
 
     update() {

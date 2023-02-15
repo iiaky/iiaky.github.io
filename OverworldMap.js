@@ -25,13 +25,13 @@ window.OverworldMaps = {
         lowerSrc: "images/maps/DemoLower.png",
         upperSrc: "images/maps/DemoUpper.png",
         gameObjects: {
-            player: new GameObject({
+            player: new Player({
                 x: utils.withGrid(5),
                 y: utils.withGrid(6),
                 useShadow: true
                }),
 
-            breadBlob: new GameObject({
+            breadBlob: new Blobs({
                 x: utils.withGrid(10),
                 y: utils.withGrid(1),
                 src: "images/characters/bread blob.png",
@@ -50,7 +50,7 @@ window.OverworldMaps = {
                 useShadow: true
                }),
 
-            cuteBlob: new GameObject({
+            cuteBlob: new Blobs({
                 x: 10,
                 y: 1,
                 src: "images/characters/average cute blob.png",

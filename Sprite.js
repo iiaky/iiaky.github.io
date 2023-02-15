@@ -1,6 +1,6 @@
 class Sprite {
 
-    constructor(config){
+    constructor(config) {
 
         // ** SETTING UP SPRITE IMAGE **
         this.image = new Image();
@@ -21,30 +21,75 @@ class Sprite {
 
         // ** CONFIGURING ANIMATION AND INITAL STATE **
         this.animations = config.animations || { //keyframe animation
-            idleDown: [
-                [0,0] //takes the x,y value in the spritesheet
-            ]
+            "idle-up": [ [0,2], [2,2] ],
+            "idle-down": [ [0,0], [2,0] ], //takes the x,y value in the spritesheet
+            "idle-left": [ [0,3], [2,3] ],
+            "idle-right": [ [0,1], [2,1] ],
+
+            "walk-up" : [ [0,2], [1,2], [2,2] ],
+            "walk-down" : [ [0,0], [1,0], [2,0] ],
+            "walk-left" : [ [0,3], [1,3], [2,3] ],
+            "walk-right" : [ [0,1], [1,1], [2,1] ]
         } // defines all animations
 
-        this.currentAnimation = config.currentAnimation || "idleDown"; //defaults to a key in animation set
-        this.currentAnimationFrame = 0; //which animation frame should be showing, which array within "animations" array
+        this.currentAnimation = config.currentAnimation || "idle-down"; //defaults to a key in animation set
+        this.currentAnimationFrame = 1; //which animation frame should be showing, which array within "animations" array
+
+        // ** DETERMINING WHEN TO SWITCH ANIMATION FRAMES **
+        this.animationFrameLimit = config.animationFrameLimit || 16; // how many game frames we want to stay at the current animation, "cadence"
+        this.animationFrameProgress = this.animationFrameLimit; // how much time left in the remaining frame
+
+
 
         //Reference the game object
         this.gameObject = config.gameObject; //required to pass in a gameObject to create a sprite
     }
 
+    get frame(){
+        return this.animations[this.currentAnimation][this.currentAnimationFrame];
+    }
+
+    setAnimation(key) {
+        // checking if the animation changed to prevent same-animation interruptions
+        if (this.currentAnimation !== key) {
+            this.currentAnimation = key; // current animation will change to new animation
+            this.currentAnimationFrame = 0; // reset frame to 1st animation frame
+            this.animationFrameProgress = this.animationFrameLimit; // reset cadence
+        }
+    }
+
+    updateAnimationProgress() {
+        // run this method everytime we draw, which is every frame
+
+        // Downtick frame progress
+        if (this.animationFrameProgress > 0) {
+            this.animationFrameProgress -= 1;
+            return;
+        }
+
+        // Or reset the counter
+        this.animationFrameProgress = this.animationFrameLimit;
+        this.currentAnimationFrame += 1;
+        
+        if (this.frame === undefined) {
+            this.currentAnimationFrame = 0;
+        }
+    }
+
     draw(ctx) {
         const x = this.gameObject.x; // takes in the x and y position from the gameObject class that is being passed into the constructor
         const y = this.gameObject.y;
+        const [frameX, frameY] = this.frame;
 
         this.isShadowLoaded && ctx.drawImage(this.shadow,
             x, y + 2); //needs an offset
         this.isLoaded && ctx.drawImage(this.image, //makes sure image is loaded first - takes a bit of time so sprite blitting is silently failing
-            0, 0,//left and top start cut
+            frameX * 32, frameY * 32, //left and top start cut, need * 32 to offset to go to the next frame
             32, 32, // right and bottom stop cut (width and height) (spritesheet)
             x, y, // player position
             32, 32 // size of bliting
         )
-
+        
+        this.updateAnimationProgress();
     }
 }

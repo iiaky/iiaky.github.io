@@ -4,7 +4,7 @@
 class Blobs extends GameObject {
     constructor(config) {
         super(config);
-        this.movementProgressRemaining = 0;
+        this.movementProgressRemaining = 32;
 
         this.directionUpdate = {
             "up": ["y", -1],
@@ -14,10 +14,16 @@ class Blobs extends GameObject {
         }
     }
 
+    update(state) {
+        this.updatePosition();
+    } // overriding the empty update() in parent GameObject class
+
     updatePosition(){
         if (this.movementProgressRemaining > 0) {
-            const [property, change] = this.directionUpdate[this.direction]
-
+            const [property, change] = this.directionUpdate[this.direction]; //making array that takes the value from the key passed in by this.direction
+                                       // where property = x or y and change is the numerical value
+            this[property] += change; // then i guess you are updating that x or y value?
+            this.movementProgressRemaining -= 1;
         }
     }
 
