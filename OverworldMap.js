@@ -26,14 +26,14 @@ window.OverworldMaps = {
         upperSrc: "images/maps/DemoUpper.png",
         gameObjects: {
             player: new GameObject({
-                x: 5,
-                y: 6,
+                x: utils.withGrid(5),
+                y: utils.withGrid(6),
                 useShadow: true
                }),
 
             breadBlob: new GameObject({
-                x: 10,
-                y: 1,
+                x: utils.withGrid(10),
+                y: utils.withGrid(1),
                 src: "images/characters/bread blob.png",
                 useShadow: true
             })

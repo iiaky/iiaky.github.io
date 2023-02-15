@@ -34,8 +34,8 @@ class Sprite {
     }
 
     draw(ctx) {
-        const x = this.gameObject.x * 16; // takes in the x and y position from the gameObject class that is being passed into the constructor
-        const y = this.gameObject.y * 16;
+        const x = this.gameObject.x; // takes in the x and y position from the gameObject class that is being passed into the constructor
+        const y = this.gameObject.y;
 
         this.isShadowLoaded && ctx.drawImage(this.shadow,
             x, y + 2); //needs an offset
