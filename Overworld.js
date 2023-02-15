@@ -41,7 +41,10 @@ class Overworld {
                 this.map.drawLowerImage(this.ctx, 0, 0);
 
                 Object.values(this.map.gameObjects).forEach(object => {
-                    object.x += 1;
+                    object.update({
+
+                        
+                    })
                     object.sprite.draw(this.ctx);
                 }) // getting values inside the "gameObjects" key-value pair,
                 // then iterating through each object to draw them (accessing the sprite within each gameObject)
