@@ -30,6 +30,30 @@ class OverworldMap {
         const {x, y} = utils.nextPosition(currentX, currentY, direction);
         return this.walls[`${x}, ${y}`] || false; // looksup coords in "walls" object - if yes, will evaluate to true
     }
+
+    mountObjects() {
+        Object.values(this.gameObjects).forEach(o => { // get all of the gameObjects in this "map" (remember, the object of gameObjects defined below), and forEach of them, mount them
+           
+            // todo: determine if object is to be mounted or not
+                // - ex: object is a key and we already picked it up.
+                
+            o.mount(this); //pass in a map to mount() in GameObject.js, which in this case is this file / this object
+        });
+    }
+
+    addWall(x, y) {
+        this.walls[`${x}, ${y}`] = true;
+    }
+
+    removeWall(x, y) {
+        delete this.walls[`${x}, ${y}`];
+    }
+
+    moveWall(wasX, wasY, direction) {
+        this.removeWall(wasX, wasY);
+        const {x, y} = utils.nextPosition(wasX, wasY, direction) // offset position
+        this.addWall(x, y);  // adding a wall at the next (new curernt) position
+    }
 }
 
 // an object of all of the maps in the game
@@ -46,8 +70,8 @@ window.OverworldMaps = {
                }),
 
             breadBlob: new Blobs({
-                x: utils.withGrid(10),
-                y: utils.withGrid(1),
+                x: utils.withGrid(3),
+                y: utils.withGrid(5),
                 src: "images/characters/bread blob.png",
                 useShadow: true
             })

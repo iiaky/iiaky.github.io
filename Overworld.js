@@ -76,6 +76,8 @@ class Overworld {
     init() {
 
         this.map = new OverworldMap(window.OverworldMaps.blobVillage); // setting a starting map
+        this.map.mountObjects();
+        
         this.directionInput = new DirectionInput(); // instantiating a listener for user input
         this.directionInput.init() // the method for running it ^
 
