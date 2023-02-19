@@ -76,13 +76,16 @@ class Sprite {
         }
     }
 
-    draw(ctx) {
-        const x = this.gameObject.x; // takes in the x and y position from the gameObject class that is being passed into the constructor
-        const y = this.gameObject.y;
+    draw(ctx, cameraPerson) { //want to be able to draw relative to a cameraPerson
+        const x = this.gameObject.x + utils.withGrid(20.5) - cameraPerson.x; // takes in the x and y position from the gameObject class that is being passed into the constructor
+        const y = this.gameObject.y +  utils.withGrid(11.5) - cameraPerson.y; // offsetting: postition + offset (10.5 for x, 6 for y to position at center of the screen) - cameraPerson's coords
         const [frameX, frameY] = this.frame;
 
         this.isShadowLoaded && ctx.drawImage(this.shadow,
-            x, y + 2); //needs an offset
+            0, 0,
+            32, 32,
+            x, y + 2,
+            32, 32); //needs an offset
         this.isLoaded && ctx.drawImage(this.image, //makes sure image is loaded first - takes a bit of time so sprite blitting is silently failing
             frameX * 32, frameY * 32, //left and top start cut, need * 32 to offset to go to the next frame
             32, 32, // right and bottom stop cut (width and height) (spritesheet)

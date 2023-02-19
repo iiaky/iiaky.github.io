@@ -1,8 +1,16 @@
 class Overworld {
     constructor(config) {
         this.element = config.element;
+        
         this.canvas = this.element.querySelector(".game-canvas");
+        // upping the resolution bc blob too big
+        this.canvas.style.width = 352 + 'px';
+        this.canvas.style.height = 198 + 'px';
+        this.canvas.width = 352 * 2;
+        this.canvas.height = 198 * 2;
+        
         this.ctx = this.canvas.getContext("2d");
+        
         this.map = null;
 
         // animation properties
@@ -37,20 +45,29 @@ class Overworld {
                 // ** CLEANING UP THE CANVAS FIRST **
                 this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
-                // ** DRAWING THE MAPS **
-                //this.map.drawLowerImage(this.ctx, 0, 0);
+                // ** CAMERA **
+                // establishing camera person - everything else will be located relative to this guy
+                const cameraPerson = this.map.gameObjects.player; // can change this to make more dyanamic cutscenes and stuff!
 
+                // ** UPDATING **
+                // because drawing is relative to the cameraPerson, update all the sprites FIRST before drawing
                 Object.values(this.map.gameObjects).forEach(object => {
                     object.update({
-                        arrow: this.directionInput.direction // passing in the key that is pressed at that current frame
-                                                             // this is the "state" parameter in the GameObject child class functions
-                        
+                        arrow: this.directionInput.direction, // passing in the key that is pressed at that current frame
+                                                             // this is the "state" parameter in the GameObject child class functions       
+                        map: this.map // pass in a reference of the map in order to check some methods - like if there is an obstacle in the way
                     })
-                    object.sprite.draw(this.ctx);
+                })
+
+                // ** DRAWING THE MAPS **
+                this.map.drawLowerImage(this.ctx, cameraPerson);
+
+                Object.values(this.map.gameObjects).forEach(object => {
+                    object.sprite.draw(this.ctx, cameraPerson); // draw relative to cameraPerson
                 }) // getting values inside the "gameObjects" key-value pair,
                 // then iterating through each object to draw them (accessing the sprite within each gameObject)
 
-                //this.map.drawUpperImage(this.ctx, 0, 0);
+                this.map.drawUpperImage(this.ctx, cameraPerson);
             }
         }
         step();

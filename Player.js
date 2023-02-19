@@ -15,36 +15,49 @@ class Player extends GameObject {
     }
 
     update(state) {
-        this.updatePosition();
-        this.updateSprite(state);
+        if (this.movementProgressRemaining > 0) { // will only call updatePosition() if we have movement to go
+            this.updatePosition(); // make sure it moves all the way first - use up all the progress remaining
+        }
+        else {
 
-        if (this.movementProgressRemaining === 0 && state.arrow) { // if state.arrow exists ... 
-            this.direction = state.arrow; // changing the direction with every arrow press
-            this.movementProgressRemaining = 4; // then the guy moves
+            // more cases for starting to walk coming...
+
+            if (this.isPlayerControlled && state.arrow) { // if we are keyboard ready && state.arrow exists ... 
+                                                          // isPlayerControlled passed in through OverworldMaps.js into GameObject constructor
+                this.startBehavior(state, {
+                    type: "walk",
+                    direction: state.arrow
+                })
+            }
+            this.updateSprite();
         }
     } // overriding the empty update() in parent GameObject class
 
-
-    updatePosition() {
-        if (this.movementProgressRemaining > 0) {
-            const [property, change] = this.directionUpdate[this.direction]; //making array that takes the value from the key passed in by this.direction
-                                       // where property = x or y and change is the numerical value
-            this[property] += change; // then i guess you are updating that x or y value?
-            this.movementProgressRemaining -= 1;
+    startBehavior(state, behavior) { // a "behavior" object defined as above
+        this.direction = behavior.direction; // changing the direction with every arrow press
+        if (behavior.type === "walk") { // now able to fire a walk command without needing it to come from the arrow key - you can call startBehavior() on the player itself
+            if (state.map.isSpaceTaken(this.x, this.y, this.direction)){
+                return; // checking if the "next" space is taken
+            } 
+            this.movementProgressRemaining = 16; // if not, then the guy moves
+            // **!!** mess around with the number - 4 feels good but then you have to change map pixel sizes (8x8 maybe instead of 16*16 and also the wall coords)
         }
     }
 
-    updateSprite(state) {
-        
-        if (this.movementProgressRemaining === 0 && !state.arrow) { // makes sure that we are not moving and no arrow key is pressed
-            this.sprite.setAnimation("idle-" + this.direction) // this.direction is updated at update(state) method, called every frame in Overworld
-        }
-        
+    updatePosition() {
+        const [property, change] = this.directionUpdate[this.direction]; //making array that takes the value from the key passed in by this.direction
+                                    // where property = x or y and change is the numerical value
+        this[property] += change; // then i guess you are updating that x or y value?
+        this.movementProgressRemaining -= 1;
+    }
 
+    updateSprite() {
+        
         if (this.movementProgressRemaining > 0) {
             this.sprite.setAnimation("walk-" + this.direction) // factors in if the character is moving or not
             return;
         }
+        this.sprite.setAnimation("idle-" + this.direction) // this.direction is updated at update(state) method, called every frame in Overworld
     }
 
 }
