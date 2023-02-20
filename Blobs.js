@@ -4,7 +4,7 @@
 class Blobs extends GameObject {
     constructor(config) {
         super(config);
-        this.movementProgressRemaining = 32;
+        this.movementProgressRemaining = 0;
 
         this.directionUpdate = {
             "up": ["y", -1],

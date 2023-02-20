@@ -15,15 +15,15 @@ class OverworldMap {
         // drawing @ offset - cameraPerson's position
         ctx.drawImage(
             this.lowerImage,
-            utils.withGrid(10.5) - cameraPerson.x,
-            utils.withGrid(6) - cameraPerson.y);
+            utils.withGrid(20) - cameraPerson.x,
+            utils.withGrid(11) - cameraPerson.y);
     }
 
     drawUpperImage(ctx, cameraPerson) {
         ctx.drawImage(
             this.upperImage,
-            utils.withGrid(10.5) - cameraPerson.x,
-            utils.withGrid(6) - cameraPerson.y);
+            utils.withGrid(20.5) - cameraPerson.x,
+            utils.withGrid(11.5) - cameraPerson.y);
     }
 
     isSpaceTaken(currentX, currentY, direction) { // checking if we can move to that space
@@ -59,28 +59,28 @@ class OverworldMap {
 // an object of all of the maps in the game
 window.OverworldMaps = {
     blobVillage : {
-        lowerSrc: "images/maps/DemoLower.png",
+        lowerSrc: "images/maps/test map.png",
         upperSrc: "images/maps/DemoUpper.png",
         gameObjects: {
             player: new Player({
-                x: utils.withGrid(5),
-                y: utils.withGrid(6),
+                x: utils.withGrid(0),
+                y: utils.withGrid(0),
                 useShadow: true,
                 isPlayerControlled: true
                }),
 
             breadBlob: new Blobs({
-                x: utils.withGrid(3),
-                y: utils.withGrid(5),
+                x: utils.withGrid(2),
+                y: utils.withGrid(2),
                 src: "images/characters/bread blob.png",
                 useShadow: true
             })
         }, // end of gameObjects array
         walls: {
-            [utils.asGridCoord(7,5)] : true, // use [] to make a dynamic key - 
-            [utils.asGridCoord(8, 5)] : true, // if you don't know what exactly the key is going to be
-            [utils.asGridCoord(7,6)] : true, // it'll evaluate to a string ;
-            [utils.asGridCoord(8, 6)] : true, // 8,7 is the location on the map
+            [utils.asGridCoord(3, 2)] : true, // use [] to make a dynamic key - 
+            [utils.asGridCoord(2, 3)] : true, // if you don't know what exactly the key is going to be
+            [utils.asGridCoord(1, 2)] : true, // it'll evaluate to a string ;
+            [utils.asGridCoord(2, 1)] : true, // 8,7 is the location on the map
             [utils.asGridCoord(6, 5)] : true,
             [utils.asGridCoord(6, 6)] : true // thinking about making each map pixel 32 (so then it would be *32 maybe instead of *16 when scaling)
         }

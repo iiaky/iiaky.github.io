@@ -4,10 +4,10 @@ class Overworld {
         
         this.canvas = this.element.querySelector(".game-canvas");
         // upping the resolution bc blob too big
-        this.canvas.style.width = 352 + 'px';
-        this.canvas.style.height = 198 + 'px';
-        this.canvas.width = 352 * 2;
-        this.canvas.height = 198 * 2;
+        this.canvas.style.width = 350 + 'px';
+        this.canvas.style.height = 196 + 'px';
+        this.canvas.width = 350 * 2;
+        this.canvas.height = 196 * 2;
         
         this.ctx = this.canvas.getContext("2d");
         
