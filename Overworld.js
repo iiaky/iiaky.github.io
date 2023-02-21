@@ -62,7 +62,9 @@ class Overworld {
                 // ** DRAWING THE MAPS **
                 this.map.drawLowerImage(this.ctx, cameraPerson);
 
-                Object.values(this.map.gameObjects).forEach(object => {
+                Object.values(this.map.gameObjects).sort((a, b) => {
+                    return a.y - b.y; // sorts by y value: subtracts y value from each other then sorts
+                }).forEach(object => {
                     object.sprite.draw(this.ctx, cameraPerson); // draw relative to cameraPerson
                 }) // getting values inside the "gameObjects" key-value pair,
                 // then iterating through each object to draw them (accessing the sprite within each gameObject)
@@ -86,6 +88,13 @@ class Overworld {
         this.startGameLoop();
         // drawing (copying) the map pixel data (from the image) onto the canvas
 
+        this.map.startCutscene([ // starts a cutscene for npc interactions - useful in path
+            { who: "player", type: "walk", direction: "down" },
+            { who: "player", type: "walk", direction: "down" },
+            { who: "player", type: "walk", direction: "down" },
+            { who: "player", type: "walk", direction: "down" },
+            { who: "player", type: "walk", direction: "right" }
+        ])
     }
 }
 // maps are 16 x 16

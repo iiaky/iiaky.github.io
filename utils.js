@@ -27,5 +27,12 @@ const utils = {
         }
         return {x,y};
 
+    },
+
+    emitEvent(name, detail) {
+        const event = new CustomEvent(name, { // use JS built in CustomEvent to make a .. custom event to listen for whatever we want
+            detail // send in any additional details about this event - must use "detail" tag -- will be sent by the parameter
+        });
+        document.dispatchEvent(event);
     }
 }

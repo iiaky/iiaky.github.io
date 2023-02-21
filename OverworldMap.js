@@ -8,6 +8,8 @@ class OverworldMap {
 
         this.upperImage = new Image();
         this.upperImage.Src = config.upperSrc; //what is drawn over the character
+
+        this.isCutscenePlaying = false;
     }
 
     // ** METHODS TO DRAW UPPER AND LOWER IMAGES AT DIFFERENT TIMES **
@@ -32,15 +34,33 @@ class OverworldMap {
     }
 
     mountObjects() {
-        Object.values(this.gameObjects).forEach(o => { // get all of the gameObjects in this "map" (remember, the object of gameObjects defined below), and forEach of them, mount them
-           
+        Object.keys(this.gameObjects).forEach(key => { // get all of the gameObjects in this "map" (remember, the object of gameObjects defined below), and forEach of them, mount them
+                                                     // this has been changes from .values to .keys in order to get their ids for puppeting
             // todo: determine if object is to be mounted or not
                 // - ex: object is a key and we already picked it up.
+
+            let object = this.gameObjects[key] // finding the gameObject based on the key - ex: player, breadBlob
+            object.id = key; // key is how we defined them basically in the array below
                 
-            o.mount(this); //pass in a map to mount() in GameObject.js, which in this case is this file / this object
+            object.mount(this); //pass in a map to mount() in GameObject.js, which in this case is this file / this object
         });
     }
 
+    async startCutscene(events) {
+        this.isCutscenePlaying = true;
+
+        // start a loop of async events, then await each one
+        for (let i = 0; i < events.length; i++) {
+            const eventHandler = new OverworldEvent({
+                event: events[i],
+                map: this
+            })
+            await eventHandler.init();
+        }
+        
+        this.isCutscenePlaying = false;
+    }
+    
     addWall(x, y) {
         this.walls[`${x}, ${y}`] = true;
     }
@@ -69,11 +89,17 @@ window.OverworldMaps = {
                 isPlayerControlled: true
                }),
 
-            breadBlob: new Blobs({
-                x: utils.withGrid(2),
-                y: utils.withGrid(2),
+            breadBlob: new Player({
+                x: utils.withGrid(5),
+                y: utils.withGrid(5),
                 src: "images/characters/bread blob.png",
-                useShadow: true
+                useShadow: true,
+                behaviorLoop: [ // defining a behaviorLoop - occurs when nothing global is happening in the scene
+                    { type: "walk", direction: "left" },
+                    { type: "stand", direction: "down", time: 800 },
+                    { type: "walk", direction: "right" },
+                    { type: "stand", direction: "down", time: 800 },
+                ]
             })
         }, // end of gameObjects array
         walls: {
