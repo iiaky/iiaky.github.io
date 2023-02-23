@@ -35,7 +35,7 @@ class GameObject {
     async doBehaviorEvent(map) {
 
         // makes sure to short circuit if there is a bigger cutscene going - always want to honor that first
-        if (map.isCutscenePlaying || this.behaviorLoop.length === 0) {
+        if (map.isCutscenePlaying || this.behaviorLoop.length === 0 || this.isStanding) {
             return;
         }
 

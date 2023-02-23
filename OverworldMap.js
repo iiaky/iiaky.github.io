@@ -59,6 +59,9 @@ class OverworldMap {
         }
         
         this.isCutscenePlaying = false;
+
+        // reset npcs to their default behaviors
+        Object.values(this.gameObjects).forEach(object => object.doBehaviorEvent(this));
     }
     
     addWall(x, y) {

@@ -5,6 +5,7 @@ class Player extends GameObject {
     constructor(config) {
         super(config);
         this.movementProgressRemaining = 0;
+        this.isStanding = false;
 
         this.directionUpdate = {
             "up": ["y", -1],
@@ -51,10 +52,12 @@ class Player extends GameObject {
         }
 
         if (behavior.type === "stand") {
+            this.isStanding = true;
             setTimeout(() => {
                 utils.emitEvent("BlobStandComplete", {
                     whoId: this.id
                 })
+                this.isStanding = false;
             }, behavior.time)
         }
     }

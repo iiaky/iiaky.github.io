@@ -89,11 +89,13 @@ class Overworld {
         // drawing (copying) the map pixel data (from the image) onto the canvas
 
         this.map.startCutscene([ // starts a cutscene for npc interactions - useful in path
-            { who: "player", type: "walk", direction: "down" },
-            { who: "player", type: "walk", direction: "down" },
-            { who: "player", type: "walk", direction: "down" },
-            { who: "player", type: "walk", direction: "down" },
-            { who: "player", type: "walk", direction: "right" }
+            { type: "textMessage", text: "HEY BESTIE"}
+        
+            // { who: "player", type: "walk", direction: "down" },
+            // { who: "player", type: "walk", direction: "down" },
+            // { who: "player", type: "walk", direction: "down" },
+            // { who: "player", type: "walk", direction: "down" },
+            // { who: "player", type: "walk", direction: "right" }
         ])
     }
 }
