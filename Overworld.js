@@ -75,10 +75,33 @@ class Overworld {
         step();
     }
 
-    init() {
+    bindActionInput(){
+        new KeyPressListener("Space", () => {
+            // is there a person here to talk to?
+            this.map.checkForActionCutscene();
+        })
+    }
 
-        this.map = new OverworldMap(window.OverworldMaps.blobVillage); // setting a starting map
+    bindPlayerPositionCheck() {
+        document.addEventListener("BlobWalkingComplete", e => {
+            if (e.detail.whoId === "player") {
+                // hero's position has changed
+                this.map.checkForFootstepCutscene();
+            }
+        })
+    }
+
+    startMap(mapConfig) { // allows us to dyanamically call maps by ourselves when triggering an action cutscene - no longer tethered to the init() function
+        this.map = new OverworldMap(mapConfig); // setting a starting map
+        this.map.overworld = this;
         this.map.mountObjects();
+    }
+
+    init() {
+       this.startMap(window.OverworldMaps.blobVillage);
+
+        this.bindActionInput();
+        this.bindPlayerPositionCheck();
         
         this.directionInput = new DirectionInput(); // instantiating a listener for user input
         this.directionInput.init() // the method for running it ^
@@ -88,15 +111,14 @@ class Overworld {
         this.startGameLoop();
         // drawing (copying) the map pixel data (from the image) onto the canvas
 
-        this.map.startCutscene([ // starts a cutscene for npc interactions - useful in path
-            { type: "textMessage", text: "HEY BESTIE"}
+        // this.map.startCutscene([ // starts a cutscene for npc interactions - useful in path
         
             // { who: "player", type: "walk", direction: "down" },
             // { who: "player", type: "walk", direction: "down" },
             // { who: "player", type: "walk", direction: "down" },
             // { who: "player", type: "walk", direction: "down" },
             // { who: "player", type: "walk", direction: "right" }
-        ])
+        //])
     }
 }
 // maps are 16 x 16

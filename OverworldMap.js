@@ -1,6 +1,9 @@
 class OverworldMap {
     constructor(config) { // config takes from the overworldmap{} below
+        this.overworld = null;
+
         this.gameObjects = config.gameObjects; //plural because multiple gameObjects will live in one scene
+        this.cutsceneSpaces = config.cutsceneSpaces || [];
         this.walls = config.walls || {}; // keeps track of where all the "walls" // obstacles are on the map
 
         this.lowerImage = new Image();
@@ -63,6 +66,27 @@ class OverworldMap {
         // reset npcs to their default behaviors
         Object.values(this.gameObjects).forEach(object => object.doBehaviorEvent(this));
     }
+
+    checkForActionCutscene() { // this is any interaction with a player / object
+        const player = this.gameObjects["player"];
+        const nextCoords = utils.nextPosition(player.x, player.y, player.direction);
+        const match = Object.values(this.gameObjects).find(object => {
+            return `${object.x}, ${object.y}` === `${nextCoords.x}, ${nextCoords.y}`
+            // find an object where ^ this condition is true
+            // returns an object - gameObject
+        });
+        if (!this.isCutscenePlaying && match && match.talking.length) {
+            this.startCutscene(match.talking[0].events); // passes in multiple events, the startCutscene method will iterate through all of them
+        }
+    }
+
+    checkForFootstepCutscene() { // this is any interaction with a space in the world
+        const player = this.gameObjects["player"];
+        const match = this.cutsceneSpaces[ `${player.x}, ${player.y}`]
+        if (!this.isCutscenePlaying && match) {
+            this.startCutscene(match[0].events); // passes in multiple events, the startCutscene method will iterate through all of them
+        }
+    }
     
     addWall(x, y) {
         this.walls[`${x}, ${y}`] = true;
@@ -102,16 +126,43 @@ window.OverworldMaps = {
                     { type: "stand", direction: "down", time: 800 },
                     { type: "walk", direction: "right" },
                     { type: "stand", direction: "down", time: 800 },
+                ],
+                talking: [
+                    { // this is the match.talking[0] - the first object in here
+                        events: [
+                            { type: "textMessage", text: "HEY BESTIE", facePlayer: "breadBlob" }, // the id of the blob that should face the player
+                            { type: "textMessage", text: "WANT A BREAD ????" },
+                            { who: "player", type: "walk", direction: "left"},
+                            { who: "player", type: "walk", direction: "left"},
+                            { who: "player", type: "stand", direction: "right"},
+                            { type: "textMessage", text: "NO ?!??!?" }
+                        ]
+                    },
+                    // later on in the game, they can say something else
+                    {
+                        events: [
+                            { type: "textMessage", text: "nvm i hate u go away" }
+                        ]
+                    },
                 ]
             })
         }, // end of gameObjects array
         walls: {
-            [utils.asGridCoord(3, 2)] : true, // use [] to make a dynamic key - 
-            [utils.asGridCoord(2, 3)] : true, // if you don't know what exactly the key is going to be
-            [utils.asGridCoord(1, 2)] : true, // it'll evaluate to a string ;
-            [utils.asGridCoord(2, 1)] : true, // 8,7 is the location on the map
-            [utils.asGridCoord(6, 5)] : true,
-            [utils.asGridCoord(6, 6)] : true // thinking about making each map pixel 32 (so then it would be *32 maybe instead of *16 when scaling)
+            // [utils.asGridCoord(3, 2)] : true, // use [] to make a dynamic key - 
+            // [utils.asGridCoord(2, 3)] : true, // if you don't know what exactly the key is going to be
+            // [utils.asGridCoord(1, 2)] : true, // it'll evaluate to a string ;
+            // [utils.asGridCoord(2, 1)] : true, // 8,7 is the location on the map
+            // [utils.asGridCoord(6, 5)] : true,
+            // [utils.asGridCoord(6, 6)] : true // thinking about making each map pixel 32 (so then it would be *32 maybe instead of *16 when scaling)
+        },
+        cutsceneSpaces: {
+            [utils.asGridCoord(0, 2)] : [ // array of possible events that can happen when this space is stepped on
+                {
+                    events: [
+                        { type: "changeMap", map: "path"},
+                    ]
+                }
+            ]
         }
 
     }, // end of blobVillage
@@ -120,18 +171,26 @@ window.OverworldMaps = {
         lowerSrc: "images/maps/StreetLower.png",
         upperSrc: "images/maps/StreetUpper.png",
         gameObjects: {
-            player: new GameObject({
-                x: 6,
-                y: 1,
+            player: new Player({
+                x: utils.withGrid(6),
+                y: utils.withGrid(1),
                 useShadow: true,
                 isPlayerControlled: true
                }),
 
-            cuteBlob: new Blobs({
-                x: 10,
-                y: 1,
+            cuteBlob: new Player({
+                x: utils.withGrid(10),
+                y: utils.withGrid(1),
                 src: "images/characters/average cute blob.png",
-                useShadow: true
+                useShadow: true,
+                talking: [
+                    {
+                        events: [
+                            { who: "cuteBlob", type: "walk", direction: "left"},
+                            { type: "textMessage", text: "heyao!", facePlayer: "cuteBlob" }
+                        ]
+                    }
+                ]
             })
         } // end of gameObjects array
     }

@@ -46,12 +46,23 @@ class OverworldEvent {
     }
 
     textMessage(resolve){
+
+        if (this.event.facePlayer) {
+            const obj = this.map.gameObjects[this.event.facePlayer]; // gets the gameObject sprite thing   
+            obj.direction = utils.oppositeDirection(this.map.gameObjects["player"].direction);
+        }
+
         const message = new TextMessage({ // making a new TextMessage from the params passed in, then just showing it on screen, simple!
             text: this.event.text, // events arent limited to just walking, but can be array of texts too
             onComplete: () => resolve() // called when textMessage is done being acknowledged by player
             // just takes a text and a thing that should happen when we see the text - decouples it from the overworld, can be used in other ways (ex. battle scenes)
         })
         message.init(document.querySelector(".game-container")); // limits to just the window of the game-container
+    }
+
+    changeMap(resolve){
+        this.map.overworld.startMap( window.OverworldMaps[this.event.map] ); // evaluates to a map config object
+        resolve();
     }
 
     init() {

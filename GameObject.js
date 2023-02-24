@@ -15,6 +15,8 @@ class GameObject {
 
         this.behaviorLoop = config.behaviorLoop || [];
         this.behaviorLoopIndex = 0; // an index to track which part of the behavior we are at
+    
+        this.talking = config.talking || [];
     }
 
     mount(map) { // when the object mounts (is blitted), we want it to add a wall at its location
