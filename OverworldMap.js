@@ -6,16 +6,26 @@ class OverworldMap {
         this.cutsceneSpaces = config.cutsceneSpaces || [];
         this.walls = config.walls || {}; // keeps track of where all the "walls" // obstacles are on the map
 
+        this.backgroundImage = new Image();
+        this.backgroundImage.src = config.backgroundSrc;
+
         this.lowerImage = new Image();
         this.lowerImage.src = config.lowerSrc; //the "tiles"
 
         this.upperImage = new Image();
-        this.upperImage.Src = config.upperSrc; //what is drawn over the character
+        this.upperImage.src = config.upperSrc; //what is drawn over the character
 
         this.isCutscenePlaying = false;
     }
 
     // ** METHODS TO DRAW UPPER AND LOWER IMAGES AT DIFFERENT TIMES **
+    drawBackground(ctx) {
+        ctx.drawImage(
+            this.backgroundImage,
+            utils.withGrid(0),
+            utils.withGrid(0));
+    }
+
     drawLowerImage(ctx, cameraPerson) {
         // drawing @ offset - cameraPerson's position
         ctx.drawImage(
@@ -27,9 +37,10 @@ class OverworldMap {
     drawUpperImage(ctx, cameraPerson) {
         ctx.drawImage(
             this.upperImage,
-            utils.withGrid(20.5) - cameraPerson.x,
-            utils.withGrid(11.5) - cameraPerson.y);
+            utils.withGrid(20) - cameraPerson.x,
+            utils.withGrid(11) - cameraPerson.y);
     }
+    
 
     isSpaceTaken(currentX, currentY, direction) { // checking if we can move to that space
         const {x, y} = utils.nextPosition(currentX, currentY, direction);
@@ -106,12 +117,13 @@ class OverworldMap {
 // an object of all of the maps in the game
 window.OverworldMaps = {
     blobVillage : {
+        backgroundSrc: "images/maps/test map bg.png", 
         lowerSrc: "images/maps/test map.png",
-        upperSrc: "images/maps/DemoUpper.png",
+        upperSrc: "images/maps/test map upper.png",
         gameObjects: {
             player: new Player({
-                x: utils.withGrid(0),
-                y: utils.withGrid(0),
+                x: utils.withGrid(20),
+                y: utils.withGrid(10),
                 useShadow: true,
                 isPlayerControlled: true
                }),
@@ -148,12 +160,30 @@ window.OverworldMaps = {
             })
         }, // end of gameObjects array
         walls: {
-            // [utils.asGridCoord(3, 2)] : true, // use [] to make a dynamic key - 
-            // [utils.asGridCoord(2, 3)] : true, // if you don't know what exactly the key is going to be
-            // [utils.asGridCoord(1, 2)] : true, // it'll evaluate to a string ;
-            // [utils.asGridCoord(2, 1)] : true, // 8,7 is the location on the map
-            // [utils.asGridCoord(6, 5)] : true,
-            // [utils.asGridCoord(6, 6)] : true // thinking about making each map pixel 32 (so then it would be *32 maybe instead of *16 when scaling)
+            // trunk
+            [utils.asGridCoord(24, 8)] : true, // use [] to make a dynamic key - 
+            [utils.asGridCoord(23, 8)] : true, // if you don't know what exactly the key is going to be
+            [utils.asGridCoord(25, 9)] : true, // it'll evaluate to a string ;
+            [utils.asGridCoord(24, 9)] : true, // 12, 4.5 is the location on the map
+            [utils.asGridCoord(23, 9)] : true, // x 2 because i fricked up the map coords thing
+            
+
+            //river
+            [utils.asGridCoord(16, 0)] : true,
+            [utils.asGridCoord(15, 1)] : true,
+            [utils.asGridCoord(14, 2)] : true,
+            [utils.asGridCoord(13, 3)] : true,
+            [utils.asGridCoord(12, 4)] : true,
+            [utils.asGridCoord(11, 4)] : true,
+                [utils.asGridCoord(12, 10)] : true,
+                [utils.asGridCoord(10, 10)] : true,
+                [utils.asGridCoord(8, 10)] : true,
+            [utils.asGridCoord(8, 8)] : true,
+            [utils.asGridCoord(6, 8)] : true,
+            [utils.asGridCoord(4, 8)] : true,
+            [utils.asGridCoord(2, 10)] : true,
+            [utils.asGridCoord(0, 12)] : true,
+
         },
         cutsceneSpaces: {
             [utils.asGridCoord(0, 2)] : [ // array of possible events that can happen when this space is stepped on
@@ -168,6 +198,7 @@ window.OverworldMaps = {
     }, // end of blobVillage
     
     path: {
+        backgroundSrc: "images/maps/test map bg.png",
         lowerSrc: "images/maps/StreetLower.png",
         upperSrc: "images/maps/StreetUpper.png",
         gameObjects: {

@@ -60,6 +60,8 @@ class Overworld {
                 })
 
                 // ** DRAWING THE MAPS **
+                this.map.drawBackground(this.ctx);
+                
                 this.map.drawLowerImage(this.ctx, cameraPerson);
 
                 Object.values(this.map.gameObjects).sort((a, b) => {
