@@ -1,0 +1,37 @@
+.Battle {
+
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-image: url(/images/maps/StreetUpper.png);
+    background-size: cover;
+    image-rendering: pixelated;
+}
+
+.Battle_player, .Battle_enemy {
+    position: absolute;
+    width: 32px;
+    height: 32px;
+    overflow: hidden;
+    background: url(/images/characters/shadow.png) no-repeat no-repeat;
+}
+
+.Battle_player img, .Battle_enemy img {
+    pointer-events: none;
+}
+
+.Battle_player {
+    bottom: 32px;
+    left: 64px;
+}
+
+.Battle_player img {
+    transform: translateY(-64px); /* nudge player sprite to face up */
+}
+
+.Battle_enemy {
+    top: 32px;
+    right: 64px;
+}
