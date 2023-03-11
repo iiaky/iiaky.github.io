@@ -48,7 +48,7 @@ class Player extends GameObject {
             state.map.moveWall(this.x, this.y, this.direction); // move the sprite's wall to its current location
             this.movementProgressRemaining = 16; // if not, then the guy moves
             // **!!** mess around with the number - 4 feels good but then you have to change map pixel sizes (8x8 maybe instead of 16*16 and also the wall coords)
-            this.updateSprite(state)    
+            this.updateSprite(state)
         }
 
         if (behavior.type === "stand") {

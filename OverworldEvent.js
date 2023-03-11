@@ -75,7 +75,7 @@ class OverworldEvent {
         const who = this.map.gameObjects[this.event.who];
         const selectCharacter = new CharacterSelect({
             onComplete: () => {
-                who.sprite.image.src = utils.user["blob-src"];
+                who.sprite.image.src = utils.user.src;
                 console.log(who.sprite.image.src);
                 resolve();
             }
