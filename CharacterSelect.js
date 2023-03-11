@@ -42,7 +42,6 @@ class CharacterSelect {
         const characters = document.querySelectorAll(".character");
         characters.forEach( element => element.addEventListener("click", event => {
             utils.user["blob-src"] = event.target.getAttribute('src');
-            console.log(utils.user["blob-src"]);
             this.done();
         }, { once: true }))
     }
