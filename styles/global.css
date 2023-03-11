@@ -1,3 +1,12 @@
+@font-face {
+    font-family: Bubbly;
+    src: url('../images/fonts/Bubbly-Regular.otf');
+}
+
+html * {
+    font-family: Bubbly, Helvetica, sans-serif;
+}
+
 :root {
     --border-color: white;
     --dialog-background: #31473e;

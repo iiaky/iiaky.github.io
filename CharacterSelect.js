@@ -5,30 +5,34 @@ class CharacterSelect {
 
     createElement() {
         this.element = document.createElement("div");
-        this.element.classList.add("character-select");
+        this.element.classList.add("wrapper");
         this.element.innerHTML = (`
-            <div class = "character-wrapper">
-                <div class = "character" id = "average-cute-blob">
-                    <img src = "${'images/characters/average cute blob.png'}"/>
-                </div>
-                <p>average cute blob</p>
-                <p>desc desc desc desc desc desc desc desc </p>
-            </div>
+            <h3>Select your character!</h3>
 
-            <div class = "character-wrapper">
-                <div class = "character" id = "plant-blob">
-                    <img src = "${'images/characters/plant blob.png'}"/>
+            <div class = character-select>
+                <div class = "character-wrapper">
+                    <div class = "character" id = "average-cute-blob">
+                        <img src = "${'images/characters/average cute blob.png'}"/>
+                    </div>
+                    <p>average cute blob</p>
+                    <p>desc desc desc desc desc desc desc desc </p>
                 </div>
-                <p>plant blob</p>
-                <p>desc desc desc desc desc desc desc desc </p>
-            </div>
 
-            <div class = "character-wrapper">
-                <div class = "character" id = "bread-blob">
-                    <img src = "${'images/characters/bread blob.png'}"/>
+                <div class = "character-wrapper">
+                    <div class = "character" id = "plant-blob">
+                        <img src = "${'images/characters/plant blob.png'}"/>
+                    </div>
+                    <p>plant blob</p>
+                    <p>desc desc desc desc desc desc desc desc </p>
                 </div>
-                <p>bread cute blob</p>
-                <p>desc desc desc desc desc desc desc desc </p>
+
+                <div class = "character-wrapper">
+                    <div class = "character" id = "bread-blob">
+                        <img src = "${'images/characters/bread blob.png'}"/>
+                    </div>
+                    <p>bread blob</p>
+                    <p>desc desc desc desc desc desc desc desc </p>
+                </div>
             </div>
         `)
     }

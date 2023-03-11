@@ -29,7 +29,7 @@
 
 .TextMessage_buton {
     margin: 0;
-    font-size: 8px;
+    font-size: 4px;
     padding: 0;
     background: none;
     border: 0;
@@ -37,7 +37,7 @@
     font-family: inherit;
     cursor: pointer;
 
-    position: absolute;
+    position: relative;
     right: 2px;
     bottom: 0;
 }
