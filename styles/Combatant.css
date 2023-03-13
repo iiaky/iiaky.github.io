@@ -1,0 +1,15 @@
+.Combatant {
+    width: 67px;
+    height: 14px;
+    position: absolute;   
+}
+
+.Combatant[data-team="player"] {
+    bottom: 32px;
+    left: 64px;
+}
+
+.Combatant[data-team="enemy"] {
+    top: 32px;
+    right: 64px;
+}

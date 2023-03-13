@@ -1,9 +1,17 @@
 class Battle {
     constructor() {
         this.combatants = {
-            "player": new Combatant({
-                name: "aku" //name from util or some global value of player info
-                
+            king: new Combatant({
+                ...Characters.king,
+                team: "enemy",
+                trust: 25,
+                maxTrust: 100
+            }, this),
+            player: new Combatant({
+                ...Characters.player,
+                team: "player",
+                trust: 0,
+                maxTrust: 1
             }, this)
         }
         this.element = null;
@@ -27,5 +35,11 @@ class Battle {
     init(container) {
         this.createElement();
         container.appendChild(this.element);
+
+        Object.keys(this.combatants).forEach(key => {
+            let combatant = this.combatants[key];
+            combatant.id = key;
+            combatant.init(this.element);
+        })
     }
 }
