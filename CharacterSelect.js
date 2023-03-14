@@ -15,7 +15,9 @@ class CharacterSelect {
                         <img src = "${'images/characters/average cute blob.png'}"/>
                     </div>
                     <p>average cute blob</p>
-                    <p>desc desc desc desc desc desc desc desc </p>
+                    <p>your average cute blob
+                    very squish, +10 squish points
+                    </p>
                 </div>
 
                 <div class = "character-wrapper">

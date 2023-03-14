@@ -41,5 +41,16 @@ class Battle {
             combatant.id = key;
             combatant.init(this.element);
         })
+
+        this.turnCycle = new TurnCycle({ // turnCycle just keeps track of whos going
+            battle: this,
+            onNewEvent: event => { // turnCycle will be spittin out events based on whos cycle it is -- this is the callback
+                return new Promise(resolve => { // onNewEvent is a function that emits some event and returns a promise
+                    const battleEvent = new BattleEvent(event, this);
+                    battleEvent.init(resolve);
+                })
+            }
+        })
+        this.turnCycle.init();
     }
 }
