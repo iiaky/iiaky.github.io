@@ -1,6 +1,6 @@
 // the actions that the blobbers can make
 
-windows.Actions = {
+window.Actions = {
 
     damage1: { // name of the quote / line? -- thinking of giving each line some id
         name: "whomp", // not sure what this is

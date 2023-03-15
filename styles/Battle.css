@@ -35,3 +35,24 @@
     top: 32px;
     right: 64px;
 }
+
+/* Animations */
+@keyframes trust-up {
+ 0% { background: rgba(62, 117, 81, 0); }
+ 50% { background: rgba(62, 117, 81, 100); }
+ 100% { background: rgba(62, 117, 81, 0); }
+}
+
+.battle-trust-up {
+    animation: trust-up 0.5s ease-in-out
+}
+
+@keyframes trust-down {
+ 0% { background: rgba(194, 45, 16, 0); }
+ 50% { background: rgba(194, 45, 16, 100); }
+ 100% { background: rgba(194, 45, 16, 0); }
+}
+
+.battle-trust-down {
+    animation: trust-down 0.5s ease-in-out
+}

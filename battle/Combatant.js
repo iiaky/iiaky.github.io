@@ -30,6 +30,11 @@ class Combatant {
                 <rect x=0 y=0 width="0%" height=1 fill=#ffffff" />
                 <rect x=0 y=1 width="0%" height=2 fill=#fcba03" />
         `);
+        
+        this.blobElement = document.createElement("img");
+        this.blobElement.classList.add("Blob");
+        this.blobElement.setAttribute("src", this.src );
+        this.blobElement.setAttribute("data-team", this.team );
 
         this.trustFills = this.hudElement.querySelectorAll(".Combatant_trust-container > rect") // saving a reference to the trust bar
     }

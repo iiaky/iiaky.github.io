@@ -20,6 +20,23 @@ class TurnCycle {
             caster,
             enemy
         }) // asks the caster what they want to do - and it waits here
+
+        const resultingEvents = submission.action.success; // retuns an array of .. next steps
+        for (let i=0; i<resultingEvents.length; i++) { // using a for loop to stay in the scope of async function
+            const event = {
+                ...resultingEvents[i],
+                submission,
+                action: submission.action,
+                caster,
+                target: submission.target
+            }
+            await this.onNewEvent(event); // for each event, the code is gonna stop here and wait
+        }
+        
+        // then change the team and next turn
+        this.currentTeam = this.currentTeam === "player" ? "enemy" : "player";
+        this.turn();
+        
     }
 
     async init() {

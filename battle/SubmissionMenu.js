@@ -1,11 +1,18 @@
 class SubmissionMenu {
     constructor( {caster, enemy, onComplete} ) {
         this.caster = caster;
-        this.enemey = enemy;
+        this.enemy = enemy;
         this.onComplete = onComplete;
     }
 
-    init(container) {
+    decide() {
+        this.onComplete({
+            action: Actions[ this.caster.actions[0] ],
+            target: this.enemy
+        })
+    }
 
+    init(container) {
+        this.decide();
     }
 }

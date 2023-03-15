@@ -116,8 +116,8 @@ class Overworld {
         this.map.startCutscene([ // starts a cutscene for npc interactions - useful in path
         
             // { who: "player", type: "walk", direction: "down" },
-             { who: "player", type: "selectCharacter"}
-            // { type: "battle" }
+            // { who: "player", type: "selectCharacter"}
+             { type: "battle" }
         ])
     }
 }

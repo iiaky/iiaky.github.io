@@ -7,7 +7,7 @@ class BattleEvent {
 
     textMessage(resolve) {
         const message = new TextMessage({
-            text: this.event.text,
+            text: this.event.text, // maybe dynamically replace this? idk
             onComplete: () => {
                 resolve(); // when the textMessage is "done" - we read it - we're gonna resolve the battle event
             }
@@ -15,11 +15,32 @@ class BattleEvent {
         message.init(this.battle.element); // the battle container to draw to the DOM
     }
 
+    async stateChange(resolve) {
+        const {caster, target, damage} = this.event;
+        if (damage) { // modifies trust - so not really dmg but its whatever
+            target.update({
+                trust: target.trust + trust
+            })
+        }
+
+        if (damage > 0) {
+            target.blobElement.classList.add("battle-trust-up")
+            await utils.wait(600);
+            target.blobElement.classList.remove("battle-trust-up")
+        }
+        else {
+            target.blobElement.classList.add("battle-trust-down")
+            await utils.wait(600);
+            target.blobElement.classList.remove("battle-trust-down")
+        }
+        resolve();
+    }
+
     submissionMenu(resolve) {
         const menu = new SubmissionMenu({
             caster: this.event.caster,
             enemy: this.event.enemy,
-            onComplete: submision => {
+            onComplete: submission => {
                 // what move to do, who to use it on
                 resolve(submission)
             }

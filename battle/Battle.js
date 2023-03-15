@@ -14,7 +14,11 @@ class Battle {
                 maxTrust: 1
             }, this)
         }
-        this.element = null;
+        
+        this.activeCombatants = {
+            player: "player", // change name and id of these
+            enemy: "king"
+        }
     }
 
     createElement() {
