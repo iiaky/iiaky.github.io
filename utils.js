@@ -3,7 +3,7 @@
 
 const utils = {
     user : {
-        name: "",
+        name: "aku",
         src: ""
     },
     withGrid(n) {

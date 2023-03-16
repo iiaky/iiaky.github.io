@@ -5,7 +5,7 @@
 }
 
 .Combatant[data-team="player"] {
-    bottom: 32px;
+    bottom: 64px;
     left: 64px;
 }
 

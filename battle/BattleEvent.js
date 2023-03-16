@@ -16,14 +16,14 @@ class BattleEvent {
     }
 
     async stateChange(resolve) {
-        const {caster, target, damage} = this.event;
-        if (damage) { // modifies trust - so not really dmg but its whatever
+        const {caster, target, trust} = this.event; // copies the object attributes
+        if (trust) {
             target.update({
                 trust: target.trust + trust
             })
         }
 
-        if (damage > 0) {
+        if (trust > 0) {
             target.blobElement.classList.add("battle-trust-up")
             await utils.wait(600);
             target.blobElement.classList.remove("battle-trust-up")
