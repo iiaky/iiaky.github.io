@@ -11,7 +11,8 @@ class Battle {
                 ...Characters.player,
                 team: "player",
                 trust: 0,
-                maxTrust: 1
+                maxTrust: 1,
+                isPlayerControlled: true
             }, this)
         }
         
