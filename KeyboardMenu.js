@@ -10,10 +10,10 @@ class KeyboardMenu {
         this.options = options;
         this.element.innerHTML = this.options.map((option, index) => { // kind of like enumerate?
             const disabledAttr = option.disabled ? "disabled" : "";
-            const autoFocusAttr = index === 0 ? "autofocus" : "";
+            //const autoFocusAttr = index === 0 ? "autofocus" : "";
             return (`
                 <div class="option">
-                    <button ${disabledAttr} ${autoFocusAttr} data-button="${index}" data-description="${option.description}">
+                    <button ${disabledAttr} data-button="${index}" data-description="${option.description}">
                         ${option.label}
                     </button>
                     <span class="right">${option.right ? option.right() : ""}</span>
@@ -62,10 +62,21 @@ class KeyboardMenu {
         container.appendChild(this.descriptionElement);
         container.appendChild(this.element);
 
-        this.up = new KeyPressListener("ArrowUp", () => {
-            
+        this.up = new KeyPressListener("KeyW", () => {
+            const current = Number(this.prevFocus.getAttribute("data-button"));
+            const prevButton = Array.from(this.element.querySelectorAll("button[data-button]")).reverse().find( el => {
+                // find a button whose data-button attr is greater than the current
+                return el.dataset.button < current && !el.disabled;
+            })
+            prevButton?.focus();
         })
-        this.down = new KeyPressListener("ArrowDown", () => {
+        this.down = new KeyPressListener("KeyS", () => {
+            const current = Number(this.prevFocus.getAttribute("data-button"));
+            const nextButton = Array.from(this.element.querySelectorAll("button[data-button]")).find( el => {
+                // find a button whose data-button attr is greater than the current
+                return el.dataset.button > current && !el.disabled;
+            })
+            nextButton?.focus(); // then the focus listener takes over - highlighting it in the DOM and updating the focus text
 
         })
     }

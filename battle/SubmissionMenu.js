@@ -6,27 +6,43 @@ class SubmissionMenu {
     }
 
     getPages() { // diff pages
+
+        // static back option
+        const backOption = {
+            label: "Go Back",
+            description: "Return to previous page",
+            handler: () => {
+                this.keyboardMenu.setOptions(this.getPages().root)
+            }
+        };
+
         return {
             root: [
                 {
                     label: "Start battle", // what the button should say
                     description: "Can you non-violently pursuade the king?", // or something idk descriptions lol
                     handler: () => {
-                        console.log("go to attacks page")
-                        // do something when chosen
+                        this.keyboardMenu.setOptions( this.getPages().attacks )
                     }
-                },
+                }, // each one of these is a button
                 {
                     label: "Exit",
                     description: "Running away?",
                     handler: () => {
-
+                        this.keyboardMenu.end();
                     }
                 },
             ],
 
             attacks: [
-
+                {
+                    label: "line 1",
+                    description: "lsdajfdsf",
+                    handler: () => {
+                        // proceed to next story-line
+                    }
+                },
+                backOption
             ]
         }
     }
