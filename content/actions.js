@@ -2,7 +2,7 @@
 
 window.Actions = {
 
-    damage1: { // name of the quote / line? -- thinking of giving each line some id
+    s001: { // name of the quote / line? -- thinking of giving each line some id
         name: "whomp", // not sure what this is
         success: [ // what happens after
             { type: "textMessage", text: "Something happened!!"},

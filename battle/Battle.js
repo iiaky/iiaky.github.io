@@ -1,17 +1,17 @@
 class Battle {
-    constructor() {
+    constructor( {onComplete} ) {
+        this.onComplete = onComplete;
+
         this.combatants = {
             king: new Combatant({
                 ...Characters.king,
                 team: "enemy",
                 trust: 25,
-                maxTrust: 100
+                maxTrust: 40
             }, this),
             player: new Combatant({
                 ...Characters.player,
                 team: "player",
-                trust: 0,
-                maxTrust: 1,
                 isPlayerControlled: true
             }, this)
         }
@@ -54,6 +54,12 @@ class Battle {
                     const battleEvent = new BattleEvent(event, this);
                     battleEvent.init(resolve);
                 })
+            },
+            onWinner: winner => {
+                // update some storyline
+
+                this.element.remove(); // removing the battle dom
+                this.onComplete();
             }
         })
         this.turnCycle.init();

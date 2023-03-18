@@ -35,30 +35,41 @@ class SubmissionMenu {
             ],
 
             attacks: [
-                {
-                    label: "line 1",
-                    description: "lsdajfdsf",
-                    handler: () => {
-                        // proceed to next story-line
+                ...this.caster.actions.map(key => {
+                    const action = Actions[key];
+                    return {
+                        label: action.name,
+                        description: action.description,
+                        handler: () => {
+                            this.menuSubmit(action)
+                        }
                     }
-                },
+                }),
                 backOption
             ]
         }
     }
 
-    decide() {
+    menuSubmit(action) {
+
+        this.keyboardMenu?.end() // if we have keyboard event listeners, we want to end them here
+
         this.onComplete({
-            action: Actions[ this.caster.actions[0] ],
+            action,
             target: this.enemy
         })
+    }
+
+    decide() {
+        this.menuSubmit(Actions[ this.caster.actions[0] ])
     }
 
     showMenu(container) {
         // decide on options to show the player using getPages()
         this.keyboardMenu = new KeyboardMenu();
         this.keyboardMenu.init(container);
-        this.keyboardMenu.setOptions( this.getPages().root );
+
+        this.keyboardMenu.setOptions( this.getPages().attacks );
     }
 
     init(container) {

@@ -7,6 +7,8 @@ class Combatant {
 
         this.actions = config.actions; //read from a script
         this.battle = battle;
+
+        this.hasTrust = typeof this.trust !== 'undefined';
     }
 
     get trustPercent() { // getting the trust percent (of the enemy - king) which will be used as the fill inside the trust container svg
@@ -22,13 +24,22 @@ class Combatant {
         this.hudElement.setAttribute("data-team", this.team); // data-attributes are the same but they aren't visually displayed.
         // but for each item that is coming in, we're going to create a diff hudElement for them and assigning them diff data attributes - team and id
         // depending on the value of this, we style them differently
+        
+        const trustComponent = () => {
+            if (this.hasTrust) {
+                return (`
+                    <p class="Combatant_trust"></p>
+                    <svg viewBox="0 0 26 3" class="Combatant_trust-container">
+                    <rect x=0 y=0 width="0%" height=1 fill=#ffffff" />
+                    <rect x=0 y=1 width="0%" height=2 fill=#fcba03" />`)
+                
+            }
+            return ""
+        }
 
         this.hudElement.innerHTML = (`
             <p class="Combatant_name">${this.name}</p>
-            <p class="Combatant_trust"></p>
-            <svg viewBox="0 0 26 3" class="Combatant_trust-container">
-                <rect x=0 y=0 width="0%" height=1 fill=#ffffff" />
-                <rect x=0 y=1 width="0%" height=2 fill=#fcba03" />
+            ${trustComponent()}
         `);
         
         this.blobElement = document.createElement("img");
@@ -46,10 +57,13 @@ class Combatant {
             this[key] = changes[key];
         });
 
-        this.trustFills.forEach(rect => rect.style.width = `${this.trustPercent}%`) // for each rect, set the width to the trust %
+        if (this.hasTrust) {
+            this.trustFills.forEach(rect => rect.style.width = `${this.trustPercent}%`) // for each rect, set the width to the trust %
 
         // to see the changes in the DOM:
         this.hudElement.querySelector(".Combatant_trust").innerText = this.trust; // left out the part to find the active combatant - watch turn based pt 1 to implement
+        }
+        
     }
 
 

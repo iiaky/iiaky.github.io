@@ -1,7 +1,8 @@
 class TurnCycle {
-    constructor ( {battle, onNewEvent} ) { // the onNewEvent is a callback
+    constructor ( {battle, onNewEvent, onWinner} ) { // the onNewEvent is a callback
         this.battle = battle;
         this.onNewEvent = onNewEvent;
+        this.onWinner = onWinner;
 
         // tracking who's turn?
         this.currentTeam = "player"
@@ -14,6 +15,8 @@ class TurnCycle {
 
         const enemyId = this.battle.activeCombatants[this.currentTeam === "player" ? "enemy" : "player"]; // the team in the combatant object
         const enemy = this.battle.combatants[enemyId];
+
+        var winner = null;
 
         const submission = await this.onNewEvent({
             type: "submissionMenu",
@@ -31,6 +34,28 @@ class TurnCycle {
                 target: submission.target
             }
             await this.onNewEvent(event); // for each event, the code is gonna stop here and wait
+        }
+
+        // has max or min trust been reached?
+        const maxTrust = submission.target.trust >= submission.target.maxTrust;
+        const minTrust = submission.target.trust <= 0;
+        if (maxTrust) {
+            winner = "player";
+            await this.onNewEvent({
+                type: "textMessage", text: `I suppose you're right, ${utils.user.name}. I'm sorry my judgement was clouded`
+            })
+        }
+        else if (minTrust) {
+            winner = "enemy";
+            await this.onNewEvent({
+                type: "textMessage", text: `Stop this nonsense. We have a war to prepare for.`
+            })
+        }
+
+        // do we have a winning team?
+        if (winner) {
+            // await this.onNewEvent({})
+            this.onWinner(winner) // a callback and passing in our winner
         }
         
         // then change the team and next turn
