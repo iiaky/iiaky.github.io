@@ -71,12 +71,15 @@ class OverworldEvent {
         
     }
 
+    prologue(resolve) {
+        
+    }
+
     selectCharacter(resolve) {
         const who = this.map.gameObjects[this.event.who];
         const selectCharacter = new CharacterSelect({
             onComplete: () => {
                 who.sprite.image.src = utils.user.src;
-                console.log(who.sprite.image.src);
                 resolve();
             }
         })
@@ -85,11 +88,16 @@ class OverworldEvent {
 
     battle(resolve) {
         const battle = new Battle({
-            onComplete: () => {
-                resolve();
+            onComplete: (didWin) => {
+                resolve(didWin ? "WON_BATTLE" : "LOST_BATTLE");
             }
         })
         battle.init(document.querySelector(".game-container"))
+    }
+
+    addStoryFlag(resolve) {
+        window.playerState.storyFlags[this.event.flag] = true; // the event is the {} passed in the events[] in OverworldMap, and the .flag acceess the "flag" part
+        resolve();
     }
 
     init() {

@@ -69,7 +69,10 @@ class OverworldMap {
                 event: events[i],
                 map: this
             })
-            await eventHandler.init();
+            const result = await eventHandler.init(); // getting back some tag from the finished event (ex. battle lost)
+            if (result === "LOST_BATTLE") {
+                break; // will NOT move on to the next event (passed through in the dict in OverworldMaps)
+            }
         }
         
         this.isCutscenePlaying = false;
@@ -87,7 +90,14 @@ class OverworldMap {
             // returns an object - gameObject
         });
         if (!this.isCutscenePlaying && match && match.talking.length) {
-            this.startCutscene(match.talking[0].events); // passes in multiple events, the startCutscene method will iterate through all of them
+            
+            // finding the most relevant cutscene based on the stoy flags we have completed so far
+            const relevantScenario = match.talking.find(scenario => {
+                return (scenario.required || []).every( sf => { // every() is an array function where each item in the array must pass some test
+                    return playerState.storyFlags[sf] // finding the required flag in playerstate
+                })
+            }) 
+            relevantScenario && this.startCutscene(relevantScenario.events); // passes in multiple events, the startCutscene method will iterate through all of them
         }
     }
 
@@ -134,12 +144,17 @@ window.OverworldMaps = {
                 src: "images/characters/bread blob.png",
                 useShadow: true,
                 behaviorLoop: [ // defining a behaviorLoop - occurs when nothing global is happening in the scene
-                    { type: "walk", direction: "left" },
-                    { type: "stand", direction: "down", time: 800 },
-                    { type: "walk", direction: "right" },
+                    { type: "stand", direction: "left", time: 800 },
                     { type: "stand", direction: "down", time: 800 },
                 ],
                 talking: [
+                    // later on in the game, they can say something else
+                    {
+                        required: ["SOME_FLAG_1"],
+                        events: [
+                            { type: "textMessage", text: "nvm i hate u go away" }
+                        ]
+                    },
                     { // this is the match.talking[0] - the first object in here
                         events: [
                             { type: "textMessage", text: "HEY BESTIE", facePlayer: "breadBlob" }, // the id of the blob that should face the player
@@ -147,15 +162,11 @@ window.OverworldMaps = {
                             { who: "player", type: "walk", direction: "left"},
                             { who: "player", type: "walk", direction: "left"},
                             { who: "player", type: "stand", direction: "right"},
-                            { type: "textMessage", text: "NO ?!??!?" }
+                            { type: "textMessage", text: "NO ?!??!?" },
+                            { type: "addStoryFlag", flag: "SOME_FLAG_1" }
                         ]
-                    },
-                    // later on in the game, they can say something else
-                    {
-                        events: [
-                            { type: "textMessage", text: "nvm i hate u go away" }
-                        ]
-                    },
+                    }
+                    
                 ]
             })
         }, // end of gameObjects array
