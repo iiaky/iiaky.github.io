@@ -72,7 +72,13 @@ class OverworldEvent {
     }
 
     prologue(resolve) {
-        
+        const prologue = new Prologue({
+            scene: "event1",
+            onComplete: () => {
+                resolve();
+            }
+        })
+        prologue.init(document.querySelector(".game-container"))
     }
 
     selectCharacter(resolve) {
