@@ -234,6 +234,12 @@ window.OverworldMaps = {
                     }
                 ]
             })
-        } // end of gameObjects array
+        }, // end of gameObjects array
+        walls: {
+
+        },
+        cutsceneSpaces: {
+            
+        }
     }
 }

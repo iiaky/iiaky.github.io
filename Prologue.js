@@ -1,42 +1,40 @@
 class Prologue {
-    constructor( {scene, onComplete }) { // maybe I specify which cutscene to use through the constructor?   
+    constructor( {scene, onNewEvent, onComplete }) { // maybe I specify which cutscene to use through the constructor?   
                     // so that I control what is shown outside of this class, and this class only handles actually showing it
         this.scene = scene; // "event1", "event2", etc
+        this.sceneNumber = 0; // will have a src and events[] in it
+        this.onNewEvent = onNewEvent;
         this.onComplete = onComplete;
     }
 
-    getNext(resolve) {
-        // get the next scene in the cutscene
+    async getNext(resolve) {
         const event = window.cutscenes[this.scene]; // this will be each "episode", if you will
-        
-        for (let i = 0; i < event.length; i++) {
-            this.source = event[i].src;
-            this.script = event[i].events;
-            // this.draw();
 
-            for (let k = 0; k < this.script.length; k++) {
-                const message = new TextMessage({
-                    text: this.script[k].text,
-                    onComplete: () => {
-                        return new Promise(resolve => {
-                            resolve();
-                        })
-                    }
-                })
-                console.log(message)
-
-                message.init(this.element);
-            }
+        if (this.sceneNumber >= event.length) { // if the current scene we're trying to access doesnt exist
+            this.done();
+            return;
         }
+
+        this.source = event[this.sceneNumber].src;
+        this.script = event[this.sceneNumber].events;
+        this.draw();
+        
+        for (let i=0; i<this.script.length; i++) {
+            const event = {
+                ...this.script[i],
+            }
+            console.log(event);
+            await this.onNewEvent(event); // for each event, the code is gonna stop here and wait
+        }
+
+        this.sceneNumber += 1;
+        this.getNext();
     }
 
     draw() {
-        // get element by id (img) . src = ...
         const img = document.getElementById("event-img");
         img.src = this.source;
         this.container.appendChild(this.element);
-
-
     }
 
     done() {
@@ -67,11 +65,12 @@ window.cutscenes = {
             required: ["pp1"],
             src: "images/cutscenes/prologue/testprologue1.png",
             events: [
-                { type: "textMessage", text: " pppp "} 
+                { type: "textMessage", text: " pppp "},
+                { type: "textMessage", text: " poopoo "} 
             ]
         },
         {
-            src: "images/cutscenes/prologue/testprologue1.png",
+            src: "images/maps/test\ battle.png",
             events: [
                 { type: "textMessage", text: " /// "} 
             ] 

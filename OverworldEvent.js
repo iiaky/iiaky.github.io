@@ -73,7 +73,13 @@ class OverworldEvent {
 
     prologue(resolve) {
         const prologue = new Prologue({
-            scene: "event1",
+            scene: this.event.scene,
+            onNewEvent: event => {
+                return new Promise(resolve => {
+                    const prologueEvent = new PrologueEvent(event, prologue);
+                    prologueEvent.init(resolve);
+                })
+            },
             onComplete: () => {
                 resolve();
             }
