@@ -2,8 +2,8 @@ window.script = {
     // scene 1 - case of []
     scene1: {
         ch1: {
-            name: "choice 1", // the actual name displayed
-            description: "asdasd", // some additional info displayed in text bar
+            name: "some descriotion here", // the actual name displayed
+            description: "yessir", // some additional info displayed in text bar
             success: [ // what happens after
                 { type: "textMessage", text: "u eat bread"},
                 { type: "textMessage", text: "they happy!"},
@@ -15,7 +15,7 @@ window.script = {
     
         ch2: {
             name: "choice 2",
-            description: "",
+            description: "im so good at this. send help :D",
             success: [
                 { type: "textMessage", text: "u leave w deep regret"},
                 { type: "stateChange", trust: -10 }

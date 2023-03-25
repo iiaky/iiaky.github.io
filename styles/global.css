@@ -3,8 +3,14 @@
     src: url('../images/fonts/Bubbly-Regular.otf');
 }
 
+@font-face {
+    font-family: BubbleBoop;
+    src: url('../images/fonts/BubbleBoop-Regular.ttf');
+}
+
+
 html * {
-    font-family: Bubbly, Helvetica, sans-serif;
+    font-family: Bubbly, BubbleBoop, Helvetica, sans-serif;
 }
 
 :root {

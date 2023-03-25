@@ -65,17 +65,59 @@ window.cutscenes = {
             required: ["pp1"],
             src: "images/cutscenes/prologue/testprologue1.png",
             events: [
-                { type: "textMessage", text: " pppp "},
-                { type: "textMessage", text: " poopoo "} 
+                { type: "textMessage", text: "Deep within a forest roamed a sacred blob species."},
+                { type: "textMessage", text: "They hopped about, made sure the wildlife was playing nice, and were undeniably cute."}, 
+                { type: "textMessage", text: "Thriving under nature’s protection, they preserved the peace of the land."}
             ]
         },
         {
             src: "images/maps/test\ battle.png",
             events: [
-                { type: "textMessage", text: " /// "} 
+                { type: "textMessage", text: "Every year, under the full moon, you could hear the forest awaken with soft squishes." },
+                { type: "textMessage", text: "And beneath, the treaded grass sprung back, blanketing any lingering signs of their presence." },
+                { type: "textMessage", text: "Where were they going?" },
             ] 
-        }
-        
+        },
+        {
+            src: "images/maps/test\ battle.png",
+            events: [
+                { type: "textMessage", text: "Regardless, they embraced all the species, and were especially welcoming to the new humans." },
+                { type: "textMessage", text: "Tribes hunted and gathered, domesticated animals, irrigated the land, and traded with neighboring tribes." },
+                { type: "textMessage", text: "Settlements rose and fell, conquered and got overturned. Civilization was underway." },
+                { type: "textMessage", text: "It was a delicate dance, but for a while, the forest existed in harmony." },
+            ]
+        },
+        {
+            src: "images/maps/test\ battle.png",
+            events: [
+                { type: "textMessage", text: "As governments manifested and monarchs conquered, the human population bloomed, but so did their greed for power." },
+                { type: "textMessage", text: "With each new generation, their relationship to the blobs became more strained." },
+                { type: "textMessage", text: "The blobs, once free to roam the world, now had rules and regulations thrust upon them." },
+                { type: "textMessage", text: "They found themselves isolated from the nature they were supposed to protect." },
+            ]
+        },
+        {
+            src: "images/maps/test\ battle.png",
+            events: [
+                { type: "textMessage", text: "The 7th generation monarchs, for unknown reasons, started to interrogate and kill any blob they found wandering around." },
+                { type: "textMessage", text: "The 8th generation monarchs confined the blobs to a remote area just east of the caves." },
+                { type: "textMessage", text: "The 9th generation monarchs deforested most of the surrounding land for lumber." },
+                { type: "textMessage", text: "In the wake of humans, the defenseless blob species suffered immense loss. With their population dwindling, the remaining blobs focused their efforts on survival." },
+            ]
+        },
+        {
+            src: "images/maps/test\ battle.png",
+            events: [
+                { type: "textMessage", text: "They tore down the same trees they grew up with, they mined the same earth they had played around in, and they, too, instilled a parliament." },
+                { type: "textMessage", text: "The king declared mobilization of resources to prepare for war, and the spirit of their peace was lost in the wind." }            ]
+        },
+        {
+            src: "images/maps/test\ battle.png",
+            events: [
+                { type: "textMessage", text: "That brings us to today. 10 years have passed, and we’re at the dawn of the 10th generation. Both sides’ hostility are at an all time high." },
+                { type: "textMessage", text: "Can you find a way to preserve the peace?" }
+            ]
+        },
     ],
     event2: [
 
