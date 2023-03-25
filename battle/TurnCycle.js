@@ -58,6 +58,12 @@ class TurnCycle {
             this.onWinner(winner) // a callback and passing in our winner
         }
         
+        // update player decisions
+        if (this.currentTeam === "player") {
+            window.playerState.updateEnemyResponse(submission.action.enemyAction); // the identifier
+            window.playerState.updateBattleProgress(submission.action.goTo);
+        }
+        
         // then change the team and next turn
         this.currentTeam = this.currentTeam === "player" ? "enemy" : "player";
         this.turn();

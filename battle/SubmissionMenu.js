@@ -36,7 +36,8 @@ class SubmissionMenu {
 
             attacks: [
                 ...this.caster.actions.map(key => {
-                    const action = Actions[key];
+                    const action = window.script[window.playerState.currentBattleScene][key];
+
                     return {
                         label: action.name,
                         description: action.description,
@@ -61,7 +62,8 @@ class SubmissionMenu {
     }
 
     decide() {
-        this.menuSubmit(Actions[ this.caster.actions[0] ])
+        console.log(window.playerState.enRes);
+        this.menuSubmit(window.playerState.enRes);
     }
 
     showMenu(container) {

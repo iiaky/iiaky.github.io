@@ -59,11 +59,10 @@ class Combatant {
 
         if (this.hasTrust) {
             this.trustFills.forEach(rect => rect.style.width = `${this.trustPercent}%`) // for each rect, set the width to the trust %
-
-        // to see the changes in the DOM:
-        this.hudElement.querySelector(".Combatant_trust").innerText = this.trust; // left out the part to find the active combatant - watch turn based pt 1 to implement
+            
+            // to see the changes in the DOM:
+            this.hudElement.querySelector(".Combatant_trust").innerText = this.trust; // left out the part to find the active combatant - watch turn based pt 1 to implement
         }
-        
     }
 
 
