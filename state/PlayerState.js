@@ -15,7 +15,6 @@ class PlayerState {
 
     updateBattleProgress(scene) { // what scene we are at - we can access enemy dialogue and future succession from here
         this.currentBattleScene = scene;
-        console.log(this.currentBattleScene);
     }
 
     updateEnemyResponse(identifier) {

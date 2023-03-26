@@ -1,5 +1,6 @@
 class TextMessage {
-    constructor ({ text, onComplete }) { // an onComplete callback
+    constructor ({ text, onComplete, name }) { // an onComplete callback
+        this.name = name ? name : "";
         this.text = text;
         this.onComplete = onComplete;
         this.element = null;
@@ -9,8 +10,9 @@ class TextMessage {
         // create a new element
         this.element = document.createElement("div");
         this.element.classList.add("TextMessage") // add a class to the div (like in html) (by convention, will always be the name of the JS class)
-    
+        
         this.element.innerHTML = (`
+        <p class = "TextMessage_name">${this.name}</p>
         <p class = "TextMessage_p"></p>
         <button class = "TextMessage_button">Next</button>
         `) // to directly modify HTML

@@ -23,7 +23,6 @@ class Prologue {
             const event = {
                 ...this.script[i],
             }
-            console.log(event);
             await this.onNewEvent(event); // for each event, the code is gonna stop here and wait
         }
 

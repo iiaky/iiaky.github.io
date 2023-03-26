@@ -62,7 +62,6 @@ class SubmissionMenu {
     }
 
     decide() {
-        console.log(window.playerState.enRes);
         this.menuSubmit(window.playerState.enRes);
     }
 

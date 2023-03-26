@@ -54,6 +54,7 @@ class OverworldEvent {
 
         const message = new TextMessage({ // making a new TextMessage from the params passed in, then just showing it on screen, simple!
             text: this.event.text, // events arent limited to just walking, but can be array of texts too
+            name: this.event.name ? this.event.name : "",
             onComplete: () => resolve() // called when textMessage is done being acknowledged by player
             // just takes a text and a thing that should happen when we see the text - decouples it from the overworld, can be used in other ways (ex. battle scenes)
         })

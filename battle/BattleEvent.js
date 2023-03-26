@@ -8,6 +8,7 @@ class BattleEvent {
     textMessage(resolve) {
         const message = new TextMessage({
             text: this.event.text, // maybe dynamically replace this? idk
+            name: this.event.name ? this.event.name : "",
             onComplete: () => {
                 resolve(); // when the textMessage is "done" - we read it - we're gonna resolve the battle event
             }
