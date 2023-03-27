@@ -12,8 +12,11 @@ class TextMessage {
         this.element.classList.add("TextMessage") // add a class to the div (like in html) (by convention, will always be the name of the JS class)
         
         this.element.innerHTML = (`
-        <p class = "TextMessage_name">${this.name}</p>
-        <p class = "TextMessage_p"></p>
+        <div class = "TextMessage_container"> 
+            <p class = "TextMessage_name">${this.name}</p>
+            <div class = "TextMessage_line"></div>
+            <p class = "TextMessage_p"></p>
+        </div>
         <button class = "TextMessage_button">Next</button>
         `) // to directly modify HTML
            // but will cause the browser to reload and recreate all DOM nodes inside of that div element -- a lot less efficient, preformance concern

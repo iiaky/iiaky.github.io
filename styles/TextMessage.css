@@ -9,19 +9,36 @@
 
     padding: 4px;
 
-    background: var(--menu-background);
-    border: 1px solid var(--menu-border-color);
+    background: radial-gradient(42.15% 1950.58% at 50% 50%,
+                              rgba(34, 34, 34, 0.4) 0%,
+                              rgba(45, 45, 45, 0.16) 100%);
     color: var(--menu-font-color);
+}
+
+.TextMessage_container {
+
 }
 
 .TextMessage_name {
     margin: 0;
-    font-size: 8px;
+    font-size: 10px;
+    text-align: center;
+    padding: 2px;
+}
+
+.TextMessage_line {
+    margin: auto;
+    width: 50%;
+    height: 0px;
+    border-bottom:1px solid white;
+    padding: 2px;
 }
 
 .TextMessage_p {
     margin: 0;
-    font-size: 12px;
+    font-size: 10px;
+    text-align: center;
+    padding: 2px;
 }
 
 .TextMessage span {
