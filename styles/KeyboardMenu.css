@@ -1,25 +1,36 @@
 .KeyboardMenu {
-    border: 1px solid var(--border-color);
-    background: var(--menu-background);
+    right: 30px;
+    bottom: 30px;
+    width: 35%;
+
     position: absolute;
+    display: grid;
+    row-gap: 1px;
 }
 .KeyboardMenu button {
-    display: flex;
+    background: radial-gradient(100% 4241.68% at 0% 48.72%,
+                              rgba(34, 34, 34, 0.4) 0%,
+                              rgba(87, 87, 87, 0) 100%);
+
+
     align-items: center;
     width: 100%;
-    text-align: left;
-    border: 0;
-    background: none;
-    height: 20px;
+    height: 18px;
     cursor: pointer;
-    font-family: inherit;
-    padding: 0;
-    padding-left: 1em;
-    font-size: 10px;
+    padding-left: 1.5em;
+
+    border: transparent;
+    border-radius: 18px;
+
+    text-align: left;
+    color: white;
+    font-size: 6.5px;
+
 }
 .KeyboardMenu button:focus {
-    background: var(--menu-selected-background);
-    outline: 0;
+    background: radial-gradient(100% 4241.68% at 0% 48.72%,
+                              rgba(0, 0, 0, 0.4) 0%,
+                              rgba(51, 51, 51, 0) 100%);
 }
 
 .KeyboardMenu .option {
@@ -37,18 +48,13 @@
     bottom: 0;
     left: 0;
     right: 0;
-    color: var(--menu-font-color);
-    border-top: 1px solid var(--border-color);
-    background: var(--menu-background);
+    background: radial-gradient(42.15% 1950.58% at 50% 50%,
+                              rgba(34, 34, 34, 0.4) 0%,
+                              rgba(45, 45, 45, 0.16) 100%);
     padding: 2px;
 }
 .DescriptionBox p {
     font-size: 10px;
+    padding: 5px 10px 5px 10px;
     margin: 0;
-}
-
-.Battle .KeyboardMenu {
-    right: 0;
-    bottom: 0;
-    width: 140px;
 }

@@ -13,10 +13,14 @@
                               rgba(34, 34, 34, 0.4) 0%,
                               rgba(45, 45, 45, 0.16) 100%);
     color: var(--menu-font-color);
+
+    backdrop-filter: blur(2px);
 }
 
 .TextMessage_container {
-
+    display: grid;
+    grid-template-columns: 50px auto 50px;
+    margin-top: 4px;
 }
 
 .TextMessage_name {
@@ -49,17 +53,22 @@
     opacity: 1;
 }
 
-.TextMessage_buton {
-    margin: 0;
-    font-size: 4px;
-    padding: 0;
+.TextMessage_button {
+    position: absolute;
+    margin: auto;
+    font-size: 8px;
     background: none;
-    border: 0;
+    border: 1px solid white;
+    border-radius: 22px;
     
     font-family: inherit;
+    color: white;
+    text-align: center;
     cursor: pointer;
 
-    position: relative;
-    right: 2px;
-    bottom: 0;
+    
+    right: 10px;
+    bottom: 5px;
+
+    padding: 4px 10px 4px 10px;
 }

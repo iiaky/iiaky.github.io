@@ -24,11 +24,6 @@ html * {
 
 }
 
-
-* {
-    box-sizing: border-box;
-}
-
 body {
     background: #333;
     padding: 0;

@@ -30,8 +30,14 @@ class Combatant {
                 return (`
                     <p class="Combatant_trust"></p>
                     <svg viewBox="0 0 26 3" class="Combatant_trust-container">
-                    <rect x=0 y=0 width="0%" height=1 fill=#ffffff" />
-                    <rect x=0 y=1 width="0%" height=2 fill=#fcba03" />`)
+                        <rect x="0" y="0" width="0%" height="1"
+                              style="fill:rgb(232, 167, 0)"
+                        />
+                        <rect x="0" y="1" width="0%" height="2"
+                              style="fill:rgb(232, 167, 0)"
+                        />
+                    </svg>
+                    `)
                 
             }
             return ""

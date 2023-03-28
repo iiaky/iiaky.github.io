@@ -113,11 +113,11 @@ class Overworld {
         this.startGameLoop();
         // drawing (copying) the map pixel data (from the image) onto the canvas
         this.map.startCutscene([ // starts a cutscene for npc interactions - useful in path
-             { type: "prologue", scene: "event1" },
+            // { type: "prologue", scene: "event1" },
             // { who: "player", type: "walk", direction: "down" },
-             { who: "player", type: "selectCharacter" },
+            // { who: "player", type: "selectCharacter" },
             // { type: "inputName"}
-            // { type: "battle" }
+             { type: "battle" }
         ])
     }
 }
