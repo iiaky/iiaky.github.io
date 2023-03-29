@@ -105,7 +105,14 @@ class OverworldMap {
         const player = this.gameObjects["player"];
         const match = this.cutsceneSpaces[ `${player.x}, ${player.y}`]
         if (!this.isCutscenePlaying && match) {
-            this.startCutscene(match[0].events); // passes in multiple events, the startCutscene method will iterate through all of them
+
+            // finding the most relevant cutscene based on the stoy flags we have completed so far
+            const relevantScenario = match.find(scenario => {
+                return (scenario.required || []).every( sf => {
+                    return playerState.storyFlags[sf] // finding the required flag in playerstate
+                })
+            }) 
+            relevantScenario && this.startCutscene(relevantScenario.events);
         }
     }
     
@@ -201,6 +208,15 @@ window.OverworldMaps = {
                 {
                     events: [
                         { type: "changeMap", map: "path"},
+                    ]
+                }
+            ],
+            [utils.asGridCoord(20, 10)] : [
+                {
+                    required: ["testflag2"],
+                    events: [
+                        { type: "textMessage", text: "de donde path where" },
+                        { type: "removeStoryFlag", flag: "testflag2" }
                     ]
                 }
             ]

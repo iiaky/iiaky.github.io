@@ -7,7 +7,7 @@ class Battle {
                 ...Characters.king,
                 team: "enemy",
                 trust: 25,
-                maxTrust: 40
+                maxTrust: 100
             }, this),
             player: new Combatant({
                 ...Characters.player,

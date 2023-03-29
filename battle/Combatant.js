@@ -29,11 +29,11 @@ class Combatant {
             if (this.hasTrust) {
                 return (`
                     <p class="Combatant_trust"></p>
-                    <svg viewBox="0 0 26 3" class="Combatant_trust-container">
-                        <rect x="0" y="0" width="0%" height="1"
-                              style="fill:rgb(232, 167, 0)"
+                        <svg viewBox="0 0 26 3" class="Combatant_trust-container">
+                        <rect x="0" y="0" width="100%" height="0.8"
+                              style="fill:rgb(51, 51, 51)"
                         />
-                        <rect x="0" y="1" width="0%" height="2"
+                        <rect x="0" y="0" width="0%" height="0.8"
                               style="fill:rgb(232, 167, 0)"
                         />
                     </svg>
@@ -53,7 +53,7 @@ class Combatant {
         this.blobElement.setAttribute("src", this.src );
         this.blobElement.setAttribute("data-team", this.team );
 
-        this.trustFills = this.hudElement.querySelectorAll(".Combatant_trust-container > rect") // saving a reference to the trust bar
+        this.trustFills = this.hudElement.querySelectorAll(".Combatant_trust-container > rect:nth-child(2)") // saving a reference to the trust bar
     }
 
     update(changes={}) { // will fill out all the state-ful elemeents in the DOM
