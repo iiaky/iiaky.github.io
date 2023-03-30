@@ -139,14 +139,14 @@ window.OverworldMaps = {
         upperSrc: "images/maps/test map upper.png",
         gameObjects: {
             player: new Player({
-                x: utils.withGrid(20),
-                y: utils.withGrid(10),
+                x: utils.withGrid(5), //23
+                y: utils.withGrid(10), //10
                 useShadow: true,
                 isPlayerControlled: true
                }),
 
             breadBlob: new Player({
-                x: utils.withGrid(5),
+                x: utils.withGrid(10),
                 y: utils.withGrid(5),
                 src: "images/characters/bread blob.png",
                 useShadow: true,
@@ -184,34 +184,118 @@ window.OverworldMaps = {
             [utils.asGridCoord(25, 9)] : true, // it'll evaluate to a string ;
             [utils.asGridCoord(24, 9)] : true, // 12, 4.5 is the location on the map
             [utils.asGridCoord(23, 9)] : true, // x 2 because i fricked up the map coords thing
-            
+
+            // fences near trunk
+            [utils.asGridCoord(22, 10)] : true,
+            [utils.asGridCoord(24, 10)] : true,
 
             //river
-            [utils.asGridCoord(16, 0)] : true,
             [utils.asGridCoord(15, 1)] : true,
-            [utils.asGridCoord(14, 2)] : true,
-            [utils.asGridCoord(13, 3)] : true,
-            [utils.asGridCoord(12, 4)] : true,
+            [utils.asGridCoord(14, 1)] : true,
+            [utils.asGridCoord(13, 2)] : true,
+            [utils.asGridCoord(12, 3)] : true,
             [utils.asGridCoord(11, 4)] : true,
-                [utils.asGridCoord(12, 10)] : true,
-                [utils.asGridCoord(10, 10)] : true,
-                [utils.asGridCoord(8, 10)] : true,
-            [utils.asGridCoord(8, 8)] : true,
-            [utils.asGridCoord(6, 8)] : true,
+                
+            [utils.asGridCoord(10, 4)] : true,
+            [utils.asGridCoord(9, 5)] : true,
+            [utils.asGridCoord(8, 5)] : true,
+            [utils.asGridCoord(7, 6)] : true,
+            [utils.asGridCoord(6, 6)] : true,
+            [utils.asGridCoord(5, 7)] : true,
             [utils.asGridCoord(4, 8)] : true,
-            [utils.asGridCoord(2, 10)] : true,
-            [utils.asGridCoord(0, 12)] : true,
+            [utils.asGridCoord(3, 8)] : true,
+            [utils.asGridCoord(2, 9)] : true,
+            [utils.asGridCoord(1, 9)] : true,
+            
+            [utils.asGridCoord(1, 10)] : true,
+            [utils.asGridCoord(1, 11)] : true,
+            [utils.asGridCoord(1, 12)] : true,
+            [utils.asGridCoord(1, 13)] : true,
+            [utils.asGridCoord(1, 14)] : true,
+            [utils.asGridCoord(2, 15)] : true,
+            [utils.asGridCoord(3, 16)] : true,
+            [utils.asGridCoord(4, 17)] : true,
+            [utils.asGridCoord(5, 18)] : true,
+            [utils.asGridCoord(6, 19)] : true,
+
+            // fences
+            [utils.asGridCoord(24, 18)] : true,
+            [utils.asGridCoord(25, 19)] : true,
+            [utils.asGridCoord(26, 20)] : true,
+            [utils.asGridCoord(27, 20)] : true,
+            [utils.asGridCoord(28, 20)] : true,
+            [utils.asGridCoord(29, 20)] : true,
+            [utils.asGridCoord(30, 20)] : true,
+            [utils.asGridCoord(31, 20)] : true,
+            [utils.asGridCoord(32, 20)] : true,
+            [utils.asGridCoord(33, 20)] : true,
+            [utils.asGridCoord(34, 20)] : true,
+            [utils.asGridCoord(34, 20)] : true,
+            [utils.asGridCoord(35, 19)] : true,
+            [utils.asGridCoord(36, 18)] : true,
+            [utils.asGridCoord(37, 17)] : true,
+            [utils.asGridCoord(38, 16)] : true,
+            [utils.asGridCoord(39, 15)] : true,
+            [utils.asGridCoord(40, 14)] : true,
+            [utils.asGridCoord(40, 13)] : true,
+            [utils.asGridCoord(41, 12)] : true,
+            [utils.asGridCoord(42, 11)] : true,
+            [utils.asGridCoord(42, 10)] : true,
+            [utils.asGridCoord(42, 9)] : true,
+            [utils.asGridCoord(42, 8)] : true,
+            [utils.asGridCoord(42, 7)] : true,
+            [utils.asGridCoord(42, 6)] : true,
+            [utils.asGridCoord(42, 5)] : true,
+            [utils.asGridCoord(41, 4)] : true,
+            [utils.asGridCoord(40, 3)] : true,
+            [utils.asGridCoord(39, 2)] : true,
+            [utils.asGridCoord(38, 1)] : true,
+            [utils.asGridCoord(37, 1)] : true,
+            [utils.asGridCoord(36, 1)] : true,
+            [utils.asGridCoord(35, 1)] : true,
+            [utils.asGridCoord(34, 1)] : true,
+            [utils.asGridCoord(33, 1)] : true,
+            [utils.asGridCoord(32, 0)] : true,
+            [utils.asGridCoord(31, 0)] : true,
+            [utils.asGridCoord(30, 0)] : true,
+            [utils.asGridCoord(29, 0)] : true,
+            [utils.asGridCoord(28, 0)] : true,
+            [utils.asGridCoord(27, 0)] : true,
+            [utils.asGridCoord(26, 0)] : true,
+            [utils.asGridCoord(25, 0)] : true,
+            [utils.asGridCoord(24, 0)] : true,
+            [utils.asGridCoord(23, 0)] : true,
+            [utils.asGridCoord(22, 1)] : true,
+            [utils.asGridCoord(21, 1)] : true,
+            [utils.asGridCoord(20, 1)] : true,
+            [utils.asGridCoord(19, 1)] : true,
+            [utils.asGridCoord(18, 1)] : true,
+            [utils.asGridCoord(17, 1)] : true,
+            [utils.asGridCoord(16, 1)] : true,
+            [utils.asGridCoord(15, 1)] : true,
+
+            [utils.asGridCoord(7, 19)] : true,
+            [utils.asGridCoord(8, 19)] : true,
+            [utils.asGridCoord(9, 19)] : true,
+            [utils.asGridCoord(10, 19)] : true,
+            [utils.asGridCoord(11, 20)] : true,
+            [utils.asGridCoord(12, 20)] : true,
+            [utils.asGridCoord(13, 20)] : true,
+            [utils.asGridCoord(14, 20)] : true,
+            [utils.asGridCoord(15, 20)] : true,
+            [utils.asGridCoord(16, 20)] : true,
+            
 
         },
         cutsceneSpaces: {
-            [utils.asGridCoord(0, 2)] : [ // array of possible events that can happen when this space is stepped on
+            [utils.asGridCoord(23, 20)] : [ // array of possible events that can happen when this space is stepped on
                 {
                     events: [
                         { type: "changeMap", map: "path"},
                     ]
                 }
             ],
-            [utils.asGridCoord(20, 10)] : [
+            [utils.asGridCoord(23, 11)] : [
                 {
                     required: ["testflag2"],
                     events: [
@@ -226,8 +310,8 @@ window.OverworldMaps = {
     
     path: {
         backgroundSrc: "images/maps/test map bg.png",
-        lowerSrc: "images/maps/StreetLower.png",
-        upperSrc: "images/maps/StreetUpper.png",
+        lowerSrc: "images/maps/test battle.png",
+        upperSrc: "",
         gameObjects: {
             player: new Player({
                 x: utils.withGrid(6),
