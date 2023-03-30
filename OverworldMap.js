@@ -139,8 +139,8 @@ window.OverworldMaps = {
         upperSrc: "images/maps/test map upper.png",
         gameObjects: {
             player: new Player({
-                x: utils.withGrid(5), //23
-                y: utils.withGrid(10), //10
+                x: utils.withGrid(21), //23
+                y: utils.withGrid(20), //10
                 useShadow: true,
                 isPlayerControlled: true
                }),
@@ -284,6 +284,16 @@ window.OverworldMaps = {
             [utils.asGridCoord(14, 20)] : true,
             [utils.asGridCoord(15, 20)] : true,
             [utils.asGridCoord(16, 20)] : true,
+            [utils.asGridCoord(17, 21)] : true,
+            [utils.asGridCoord(18, 22)] : true,
+            [utils.asGridCoord(19, 22)] : true,
+            [utils.asGridCoord(20, 22)] : true,
+            [utils.asGridCoord(21, 22)] : true,
+            [utils.asGridCoord(22, 22)] : true,
+            [utils.asGridCoord(23, 21)] : true,
+            [utils.asGridCoord(23, 20)] : true,
+            [utils.asGridCoord(23, 19)] : true,
+            [utils.asGridCoord(23, 18)] : true,
             
 
         },
