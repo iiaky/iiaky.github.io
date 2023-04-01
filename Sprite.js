@@ -77,8 +77,11 @@ class Sprite {
     }
 
     draw(ctx, cameraPerson) { //want to be able to draw relative to a cameraPerson
-        const x = this.gameObject.x + utils.withGrid(20) - cameraPerson.x; // takes in the x and y position from the gameObject class that is being passed into the constructor
-        const y = this.gameObject.y +  utils.withGrid(11) - cameraPerson.y; // offsetting: postition + offset (10.5 for x, 6 for y to position at center of the screen) - cameraPerson's coords
+        const x = cameraPerson ? this.gameObject.x + utils.withGrid(20) - cameraPerson.x : this.gameObject.x;
+        const y = cameraPerson ? this.gameObject.y + utils.withGrid(11) - cameraPerson.y : this.gameObject.y;
+            // takes in the x and y position from the gameObject class that is being passed into the constructor
+            // offsetting: postition + offset (10.5 for x, 6 for y to position at center of the screen) - cameraPerson's coords
+
         const [frameX, frameY] = this.frame;
 
         this.isShadowLoaded && ctx.drawImage(this.shadow,

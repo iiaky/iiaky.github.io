@@ -16,6 +16,8 @@ class OverworldMap {
         this.upperImage.src = config.upperSrc; //what is drawn over the character
 
         this.isCutscenePlaying = false;
+        
+        this.cameraPerson = config.cameraPerson;
     }
 
     // ** METHODS TO DRAW UPPER AND LOWER IMAGES AT DIFFERENT TIMES **
@@ -28,17 +30,23 @@ class OverworldMap {
 
     drawLowerImage(ctx, cameraPerson) {
         // drawing @ offset - cameraPerson's position
+        const x = this.cameraPerson ? utils.withGrid(20) - cameraPerson.x : 0;
+        const y = this.cameraPerson ? utils.withGrid(11) - cameraPerson.y : 0;
+
         ctx.drawImage(
             this.lowerImage,
-            utils.withGrid(20) - cameraPerson.x,
-            utils.withGrid(11) - cameraPerson.y);
+            x,
+            y);
     }
 
     drawUpperImage(ctx, cameraPerson) {
+        const x = this.cameraPerson ? utils.withGrid(20) - cameraPerson.x : 0;
+        const y = this.cameraPerson ? utils.withGrid(11) - cameraPerson.y : 0;
+
         ctx.drawImage(
             this.upperImage,
-            utils.withGrid(20) - cameraPerson.x,
-            utils.withGrid(11) - cameraPerson.y);
+            x,
+            y);
     }
     
 
@@ -134,13 +142,14 @@ class OverworldMap {
 // an object of all of the maps in the game
 window.OverworldMaps = {
     blobVillage : {
+        cameraPerson: true,
         backgroundSrc: "images/maps/test map bg.png", 
         lowerSrc: "images/maps/test map.png",
         upperSrc: "images/maps/test map upper.png",
         gameObjects: {
             player: new Player({
-                x: utils.withGrid(21), //23
-                y: utils.withGrid(20), //10
+                x: utils.withGrid(23), 
+                y: utils.withGrid(10), 
                 useShadow: true,
                 isPlayerControlled: true
                }),
@@ -291,7 +300,6 @@ window.OverworldMaps = {
             [utils.asGridCoord(21, 22)] : true,
             [utils.asGridCoord(22, 22)] : true,
             [utils.asGridCoord(23, 21)] : true,
-            [utils.asGridCoord(23, 20)] : true,
             [utils.asGridCoord(23, 19)] : true,
             [utils.asGridCoord(23, 18)] : true,
             
@@ -314,18 +322,18 @@ window.OverworldMaps = {
                     ]
                 }
             ]
-        }
-
+        },
     }, // end of blobVillage
     
     path: {
+        cameraPerson: false,
         backgroundSrc: "images/maps/test map bg.png",
-        lowerSrc: "images/maps/test battle.png",
+        lowerSrc: "images/maps/path.png",
         upperSrc: "",
         gameObjects: {
             player: new Player({
-                x: utils.withGrid(6),
-                y: utils.withGrid(1),
+                x: utils.withGrid(3),
+                y: utils.withGrid(17),
                 useShadow: true,
                 isPlayerControlled: true
                }),
