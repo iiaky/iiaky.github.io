@@ -48,6 +48,7 @@ class Overworld {
                 // ** CAMERA **
                 // establishing camera person - everything else will be located relative to this guy
                 const cameraPerson = this.map.cameraPerson ? this.map.gameObjects.player : null // can change this to make more dyanamic cutscenes and stuff!
+
                 // ** UPDATING **
                 // because drawing is relative to the cameraPerson, update all the sprites FIRST before drawing
                 Object.values(this.map.gameObjects).forEach(object => {
@@ -99,7 +100,7 @@ class Overworld {
     }
 
     init() {
-       this.startMap(window.OverworldMaps.path);
+       this.startMap(window.OverworldMaps.blobVillage);
 
         this.bindActionInput();
         this.bindPlayerPositionCheck();
@@ -112,11 +113,11 @@ class Overworld {
         this.startGameLoop();
         // drawing (copying) the map pixel data (from the image) onto the canvas
         this.map.startCutscene([ // starts a cutscene for npc interactions - useful in path
-             { type: "prologue", scene: "event1" },
+            // { type: "prologue", scene: "event1" },
             // { who: "player", type: "walk", direction: "down" },
-             { who: "player", type: "selectCharacter" },
+            // { who: "player", type: "selectCharacter" },
             // { type: "inputName"}
-             { type: "battle" }
+            // { type: "battle" }
         ])
     }
 }
