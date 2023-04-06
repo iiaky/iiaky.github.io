@@ -1,7 +1,9 @@
 class PlayerState {
     constructor() {
         this.storyFlags = {
-            "testflag2": true
+            "testflag2": true,
+            "path": true,
+            "meeting": true
         }
 
         this.currentBattleScene = "scene1";

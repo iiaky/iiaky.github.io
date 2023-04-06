@@ -317,7 +317,9 @@ window.OverworldMaps = {
                 {
                     required: ["testflag2"],
                     events: [
-                        { type: "textMessage", text: "de donde path where" },
+                        { type: "textMessage", text: "Careful, don't venture out too far..." },
+                        { type: "removeWall", x: 22, y: 10 },
+                        { type: "removeWall", x: 24, y: 10 },
                         { type: "removeStoryFlag", flag: "testflag2" }
                     ]
                 }
@@ -332,16 +334,18 @@ window.OverworldMaps = {
         upperSrc: "",
         gameObjects: {
             player: new Player({
-                x: utils.withGrid(3),
-                y: utils.withGrid(17),
+                x: utils.withGrid(2), //10
+                y: utils.withGrid(17), //18
                 useShadow: true,
                 isPlayerControlled: true
                }),
 
-            cuteBlob: new Player({
+            person: new Player({
                 x: utils.withGrid(10),
-                y: utils.withGrid(1),
-                src: "images/characters/average cute blob.png",
+                y: utils.withGrid(18),
+                src: "images/characters/person.png",
+                frameX: 48,
+                frameY: 64,
                 useShadow: true,
                 talking: [
                     {
@@ -354,10 +358,118 @@ window.OverworldMaps = {
             })
         }, // end of gameObjects array
         walls: {
+            [utils.asGridCoord(1, 17)] : true,
+            [utils.asGridCoord(2, 16)] : true,
+            [utils.asGridCoord(2, 18)] : true,
+            [utils.asGridCoord(3, 15)] : true,
+            [utils.asGridCoord(3, 19)] : true,
+            [utils.asGridCoord(4, 15)] : true,
+            
+            [utils.asGridCoord(4, 19)] : true,
+            [utils.asGridCoord(5, 19)] : true,
+            [utils.asGridCoord(6, 19)] : true,
+            [utils.asGridCoord(7, 19)] : true,
+            [utils.asGridCoord(8, 19)] : true,
+            [utils.asGridCoord(9, 19)] : true,
+            [utils.asGridCoord(10, 19)] : true,
+            [utils.asGridCoord(11, 19)] : true,
+            [utils.asGridCoord(12, 20)] : true,
+            [utils.asGridCoord(13, 20)] : true,
+            [utils.asGridCoord(14, 20)] : true,
+            [utils.asGridCoord(15, 20)] : true,
+            [utils.asGridCoord(16, 21)] : true,
+            [utils.asGridCoord(17, 21)] : true,
+            [utils.asGridCoord(18, 21)] : true,
+            [utils.asGridCoord(19, 21)] : true,
+            [utils.asGridCoord(20, 21)] : true,
+            [utils.asGridCoord(21, 21)] : true,
+            [utils.asGridCoord(22, 21)] : true,
+            [utils.asGridCoord(23, 21)] : true,
+            [utils.asGridCoord(24, 21)] : true,
+            [utils.asGridCoord(25, 21)] : true,
+            [utils.asGridCoord(26, 21)] : true,
+            [utils.asGridCoord(27, 21)] : true,
+            [utils.asGridCoord(28, 21)] : true,
+            [utils.asGridCoord(29, 21)] : true,
+            [utils.asGridCoord(30, 21)] : true,
+            [utils.asGridCoord(31, 21)] : true,
+            [utils.asGridCoord(32, 20)] : true,
+            [utils.asGridCoord(33, 20)] : true,
+            [utils.asGridCoord(34, 20)] : true,
+            [utils.asGridCoord(35, 19)] : true,
+            [utils.asGridCoord(36, 18)] : true,
+            [utils.asGridCoord(37, 18)] : true,
+            [utils.asGridCoord(38, 18)] : true,
+            [utils.asGridCoord(39, 18)] : true,
+            [utils.asGridCoord(40, 17)] : true,
+            [utils.asGridCoord(40, 16)] : true,
 
+            [utils.asGridCoord(39, 15)] : true,
+            [utils.asGridCoord(38, 15)] : true,
+            [utils.asGridCoord(37, 15)] : true,
+            [utils.asGridCoord(36, 15)] : true,
+            [utils.asGridCoord(36, 15)] : true,
+            [utils.asGridCoord(35, 15)] : true,
+            [utils.asGridCoord(34, 16)] : true,
+            [utils.asGridCoord(33, 16)] : true,
+            [utils.asGridCoord(32, 16)] : true,
+            [utils.asGridCoord(31, 16)] : true,
+            [utils.asGridCoord(30, 16)] : true,
+            [utils.asGridCoord(29, 17)] : true,
+            [utils.asGridCoord(28, 17)] : true,
+            [utils.asGridCoord(27, 17)] : true,
+            [utils.asGridCoord(26, 17)] : true,
+            [utils.asGridCoord(25, 18)] : true,
+            [utils.asGridCoord(24, 18)] : true,
+            [utils.asGridCoord(23, 18)] : true,
+            [utils.asGridCoord(22, 18)] : true,
+            [utils.asGridCoord(21, 18)] : true,
+            [utils.asGridCoord(20, 18)] : true,
+            [utils.asGridCoord(19, 18)] : true,
+            [utils.asGridCoord(18, 18)] : true,
+            [utils.asGridCoord(17, 18)] : true,
+            [utils.asGridCoord(16, 18)] : true,
+            [utils.asGridCoord(15, 18)] : true,
+            [utils.asGridCoord(14, 18)] : true,
+            [utils.asGridCoord(13, 17)] : true,
+            [utils.asGridCoord(12, 17)] : true,
+            [utils.asGridCoord(11, 16)] : true,
+            [utils.asGridCoord(10, 16)] : true,
+            [utils.asGridCoord(9, 16)] : true,
+            [utils.asGridCoord(8, 16)] : true,
+            [utils.asGridCoord(7, 16)] : true,
+            [utils.asGridCoord(6, 16)] : true,
+            [utils.asGridCoord(5, 15)] : true,
         },
         cutsceneSpaces: {
-            
+            [utils.asGridCoord(2, 17)] : [ // array of possible events that can happen when this space is stepped on
+                {
+                    events: [
+                        { type: "changeMap", map: "blobVillage"},
+                    ]
+                }
+            ],
+            [utils.asGridCoord(3, 17)] : [
+                {   
+                    required: ["path"],
+                    events: [
+                        { type: "textMessage", text: "The overgrown path, stained with blood, remained untravelled for years." },
+                        { type: "textMessage", text: "How daring of you to step foot; who knows what can lie in wait..." },
+                        { type: "textMessage", text: "..." },
+                        { type: "textMessage", text: "What's that sound?" },
+                        { type: "removeStoryFlag", flag: "path" }
+                    ]
+                }
+            ],
+            [utils.asGridCoord(15, 19)] : [
+                {
+                    required: ["meeting"],
+                    events: [
+                        { type: "textMessage", text: "boo!" },
+                        { type: "removeStoryFlag", flag: "meeting" }
+                    ]
+                }
+            ]
         }
     }
 }

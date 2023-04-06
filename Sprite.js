@@ -9,6 +9,9 @@ class Sprite {
             this.isLoaded = true;
         }
 
+        this.frameX = config.frameX || 32;
+        this.frameY = config.frameY || 32;
+
         // ** SHADOWS **
         this.shadow = new Image();
         this.useShadow = config.useShadow;
@@ -91,9 +94,9 @@ class Sprite {
             32, 32); //needs an offset
         this.isLoaded && ctx.drawImage(this.image, //makes sure image is loaded first - takes a bit of time so sprite blitting is silently failing
             frameX * 32, frameY * 32, //left and top start cut, need * 32 to offset to go to the next frame
-            32, 32, // right and bottom stop cut (width and height) (spritesheet)
+            this.frameX, this.frameY, // right and bottom stop cut (width and height) (spritesheet)
             x, y, // player position
-            32, 32 // size of bliting
+            this.frameX, this.frameY // size of bliting
         )
         
         this.updateAnimationProgress();

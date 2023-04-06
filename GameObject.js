@@ -11,7 +11,9 @@ class GameObject {
         this.sprite = new Sprite({
             gameObject: this,
             src: config.src || this.src || "images/characters/average cute blob.png",
-            useShadow: config.useShadow
+            useShadow: config.useShadow,
+            frameX: config.frameX || 32,
+            frameY: config.frameY || 32
         });
 
         this.behaviorLoop = config.behaviorLoop || [];

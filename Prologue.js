@@ -59,7 +59,7 @@ class Prologue {
 }
 
 window.cutscenes = {
-    event1: [ // each specified cutscene
+    intro: [ // each specified cutscene
         {   
             required: ["pp1"],
             src: "images/cutscenes/prologue/testprologue1.png",
@@ -104,8 +104,14 @@ window.cutscenes = {
             ]
         },
     ],
-    event2: [
+    healing_cave: [
 
+    ],
+    win: [
+
+    ],
+    lose: [
+        
     ]
     
 }
