@@ -341,16 +341,17 @@ window.OverworldMaps = {
                }),
 
             person: new Player({
-                x: utils.withGrid(10),
-                y: utils.withGrid(18),
+                x: utils.withGrid(16),
+                y: utils.withGrid(14),
                 src: "images/characters/person.png",
-                frameX: 48,
+                frameX: 32,
                 frameY: 64,
+                Yoffset: 32,
                 useShadow: true,
                 talking: [
                     {
                         events: [
-                            { who: "cuteBlob", type: "walk", direction: "left"},
+                            { who: "person", type: "walk", direction: "left"},
                             { type: "textMessage", text: "heyao!", facePlayer: "cuteBlob" }
                         ]
                     }
@@ -455,6 +456,8 @@ window.OverworldMaps = {
                     events: [
                         { type: "textMessage", text: "The overgrown path, stained with blood, remained untravelled for years." },
                         { type: "textMessage", text: "How daring of you to step foot; who knows what can lie in wait..." },
+                        { who: "person", type: "walk", direction: "right"},
+                        { who: "person", type: "stand", direction: "down"},
                         { type: "textMessage", text: "..." },
                         { type: "textMessage", text: "What's that sound?" },
                         { type: "removeStoryFlag", flag: "path" }
@@ -465,7 +468,15 @@ window.OverworldMaps = {
                 {
                     required: ["meeting"],
                     events: [
-                        { type: "textMessage", text: "boo!" },
+                        { who: "person", type: "walk", direction: "right"},
+                        { who: "person", type: "walk", direction: "down"},
+                        { who: "person", type: "walk", direction: "down"},
+                        { who: "person", type: "walk", direction: "down"},
+                        { type: "removeWall", x: 18, y: 18 },
+                        { who: "person", type: "walk", direction: "down"},
+                        { who: "person", type: "walk", direction: "down"},
+                        { type: "addWall", x: 18, y: 18 },
+                        { type: "textMessage", text: "boo!", facePlayer: "person" },
                         { type: "removeStoryFlag", flag: "meeting" }
                     ]
                 }

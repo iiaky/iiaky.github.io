@@ -124,6 +124,11 @@ class OverworldEvent {
         resolve();
     }
 
+    addWall(resolve) {
+        this.map.addWall(utils.withGrid(this.event.x), utils.withGrid(this.event.y));
+        resolve();
+    }
+
     init() {
         return new Promise(resolve => {
             this[this.event.type](resolve) // event.type is the string "walk" or "stand", calls the cooresponding event type function on itself, passing in resolve

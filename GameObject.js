@@ -13,7 +13,8 @@ class GameObject {
             src: config.src || this.src || "images/characters/average cute blob.png",
             useShadow: config.useShadow,
             frameX: config.frameX || 32,
-            frameY: config.frameY || 32
+            frameY: config.frameY || 32,
+            Yoffset: config.Yoffset
         });
 
         this.behaviorLoop = config.behaviorLoop || [];
