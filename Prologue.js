@@ -105,7 +105,14 @@ window.cutscenes = {
         },
     ],
     healing_cave: [
-
+        {   
+            required: ["pp1"],
+            src: "images/cutscenes/prologue/testprologue1.png",
+            events: [
+                { type: "textMessage", text: "Deep within a forest roamed a sacred blob species."},
+                { type: "textMessage", text: "They preserved the peace of the land, and were undeniably cute."}, 
+            ]
+        },
     ],
     win: [
 

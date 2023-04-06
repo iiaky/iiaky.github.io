@@ -166,25 +166,73 @@ window.OverworldMaps = {
                 talking: [
                     // later on in the game, they can say something else
                     {
-                        required: ["SOME_FLAG_1"],
+                        required: ["met_human"],
                         events: [
-                            { type: "textMessage", text: "nvm i hate u go away" }
+                            { type: "textMessage", text: "A healing slime condensate? You must mean the []", name: "help i cant think of a name", facePlayer: "breadBlob"},
+                            { type: "textMessage", text: "You know about it? I thought it was just a myth.", name: "You" },
+                            { type: "removeWall", x: 9, y: 5 },
+                            { who: "breadBlob", type: "walk", direction: "left"},
+                            { who: "breadBlob", type: "walk", direction: "up"},
+                            { type: "textMessage", text: "Oh not at all. Come with me, let me show you something that's been long forgotten.", name: "help i cant think of a name", facePlayer: "breadBlob"},
+                            { who: "breadBlob", type: "walk", direction: "left"},
+                            { who: "breadBlob", type: "walk", direction: "left"},
+                            { who: "breadBlob", type: "walk", direction: "up"},
+                            { who: "breadBlob", type: "walk", direction: "left"},
+                            { who: "breadBlob", type: "walk", direction: "left"},
+                            { who: "breadBlob", type: "walk", direction: "up"},
+                            { who: "breadBlob", type: "walk", direction: "left"},
+                            { who: "breadBlob", type: "walk", direction: "left"},
+                            { who: "breadBlob", type: "walk", direction: "up"},
+                            { who: "breadBlob", type: "walk", direction: "left"},
+                            { who: "breadBlob", type: "walk", direction: "left"},
+                            { type: "textMessage", text: "C'mon, we don't have all day!", name: "help i cant think of a name", facePlayer: "breadBlob"},
+                            { type: "prologue", scene: "healing_cave" },
+                            
                         ]
                     },
                     { // this is the match.talking[0] - the first object in here
                         events: [
-                            { type: "textMessage", text: "HEY BESTIE", facePlayer: "breadBlob" }, // the id of the blob that should face the player
-                            { type: "textMessage", text: "WANT A BREAD ????" },
-                            { who: "player", type: "walk", direction: "left"},
-                            { who: "player", type: "walk", direction: "left"},
-                            { who: "player", type: "stand", direction: "right"},
-                            { type: "textMessage", text: "NO ?!??!?" },
-                            { type: "addStoryFlag", flag: "SOME_FLAG_1" }
+                            { type: "textMessage", text: "I miss the olden days...", name: "idk", facePlayer: "breadBlob" }, // the id of the blob that should face the player
+                            { type: "textMessage", text: "where humans and blobs lived in peace.", name: "idk" },
+                            { type: "textMessage", text: "I remember playing dodgeball with the children...", name: "idk" },
+                            { type: "textMessage", text: "Oh, what I would give to bring those days back.", name: "idk" },
+                        ]
+                    }
+                ]
+            }),
+
+            king: new Player({
+                x: utils.withGrid(28),
+                y: utils.withGrid(15),
+                src: "images/characters/king.png",
+                useShadow: true,
+                behaviorLoop: [ // defining a behaviorLoop - occurs when nothing global is happening in the scene
+                    { type: "stand", direction: "up", time: 800 },
+                    { type: "stand", direction: "right", time: 500 },
+                    { type: "stand", direction: "down", time: 600 },
+                    { type: "stand", direction: "left", time: 1000 },
+                    { type: "stand", direction: "down", time: 600 },
+
+                ],
+                talking: [
+                    // later on in the game, they can say something else
+                    {
+                        required: ["met_human", ""],
+                        events: [
+                            { type: "textMessage", text: "??" }
+                        ]
+                    },
+                    { // this is the match.talking[0] - the first object in here
+                        events: [
+                            { type: "textMessage", text: "We've been at war with the humans for 10 years now.", name: "Blob King", facePlayer: "king" }, // the id of the blob that should face the player
+                            { type: "textMessage", text: "If this continues... I fear what's to come.", name: "Blob King", facePlayer: "king" }, // the id of the blob that should face the player
+                            { type: "textMessage", text: "But we must avenge ourselves, our ancestors, our legacy, and our past.", name: "Blob King", facePlayer: "king" }, // the id of the blob that should face the player
+                            { type: "textMessage", text: "Let this war end with me!", name: "Blob King", facePlayer: "king" }, // the id of the blob that should face the player
                         ]
                     }
                     
                 ]
-            })
+            }),
         }, // end of gameObjects array
         walls: {
             // trunk
@@ -315,12 +363,13 @@ window.OverworldMaps = {
             ],
             [utils.asGridCoord(23, 11)] : [
                 {
-                    required: ["testflag2"],
+                    required: ["village_start"],
                     events: [
                         { type: "textMessage", text: "Careful, don't venture out too far..." },
+                        { type: "textMessage", text: "Try talking to the King, [name], or [name]. I'm sure they have something to say." },
                         { type: "removeWall", x: 22, y: 10 },
                         { type: "removeWall", x: 24, y: 10 },
-                        { type: "removeStoryFlag", flag: "testflag2" }
+                        { type: "removeStoryFlag", flag: "village_start" }
                     ]
                 }
             ]
@@ -331,7 +380,7 @@ window.OverworldMaps = {
         cameraPerson: false,
         backgroundSrc: "images/maps/test map bg.png",
         lowerSrc: "images/maps/path.png",
-        upperSrc: "",
+        upperSrc: "images/maps/path upper.png",
         gameObjects: {
             player: new Player({
                 x: utils.withGrid(2), //10
@@ -341,18 +390,34 @@ window.OverworldMaps = {
                }),
 
             person: new Player({
-                x: utils.withGrid(16),
+                x: utils.withGrid(24),
                 y: utils.withGrid(14),
                 src: "images/characters/person.png",
                 frameX: 32,
                 frameY: 64,
                 Yoffset: 32,
                 useShadow: true,
+                animations: {
+                    "idle-up": [ [0,2] ],
+                    "idle-down": [ [0,0] ],
+                    "idle-left": [ [0,3] ],
+                    "idle-right": [ [0,1] ],
+        
+                    "walk-up" : [ [0,2], [1,2], [2,2] ],
+                    "walk-down" : [ [0,0], [1,0], [2,0] ],
+                    "walk-left" : [ [0,3], [1,3], [2,3] ],
+                    "walk-right" : [ [0,1], [1,1], [2,1] ]
+                },
                 talking: [
                     {
+                        required: ["met_human"],
                         events: [
-                            { who: "person", type: "walk", direction: "left"},
-                            { type: "textMessage", text: "heyao!", facePlayer: "cuteBlob" }
+                            { type: "textMessage", text: "Could you ask around about the healing condensate? Maybe it could help us.", name: "???", facePlayer: "person"}
+                        ]
+                    },
+                    {
+                        events: [
+                            { type: "textMessage", text: "An unknown human..." }
                         ]
                     }
                 ]
@@ -452,23 +517,27 @@ window.OverworldMaps = {
             ],
             [utils.asGridCoord(3, 17)] : [
                 {   
-                    required: ["path"],
+                    required: ["first_path"],
                     events: [
                         { type: "textMessage", text: "The overgrown path, stained with blood, remained untravelled for years." },
                         { type: "textMessage", text: "How daring of you to step foot; who knows what can lie in wait..." },
-                        { who: "person", type: "walk", direction: "right"},
+                        { who: "person", type: "walk", direction: "left"},
                         { who: "person", type: "stand", direction: "down"},
                         { type: "textMessage", text: "..." },
                         { type: "textMessage", text: "What's that sound?" },
-                        { type: "removeStoryFlag", flag: "path" }
+                        { type: "removeStoryFlag", flag: "first_path" }
                     ]
                 }
             ],
             [utils.asGridCoord(15, 19)] : [
                 {
-                    required: ["meeting"],
+                    required: ["second_path"],
                     events: [
-                        { who: "person", type: "walk", direction: "right"},
+                        { who: "person", type: "walk", direction: "left"},
+                        { who: "person", type: "walk", direction: "left"},
+                        { who: "person", type: "walk", direction: "left"},
+                        { who: "person", type: "walk", direction: "left"},
+                        { who: "person", type: "walk", direction: "left"},
                         { who: "person", type: "walk", direction: "down"},
                         { who: "person", type: "walk", direction: "down"},
                         { who: "person", type: "walk", direction: "down"},
@@ -476,8 +545,48 @@ window.OverworldMaps = {
                         { who: "person", type: "walk", direction: "down"},
                         { who: "person", type: "walk", direction: "down"},
                         { type: "addWall", x: 18, y: 18 },
-                        { type: "textMessage", text: "boo!", facePlayer: "person" },
-                        { type: "removeStoryFlag", flag: "meeting" }
+                        { type: "textMessage", text: "Hey! Stop in your tracks!!", name: "???", facePlayer: "person" },
+                        { who: "player", type: "walk", direction: "left"},
+                        { who: "player", type: "stand", direction: "right"},
+                        { type: "textMessage", text: "Please listen to what I have to say, I promise it's urgent. I'm not here to hurt you!", name: "???", facePlayer: "person" },
+                        { type: "textMessage", text: "Why would I trust you?", name: "You" },
+                        { type: "textMessage", text: "Would this help convince you?", name: "???" },
+                        { type: "textMessage", text: "The mysterious human hands you an official notice signed by their king." },
+                        { type: "textMessage", text: "The king, all the tribes, actually, is planning to completely wipe your your kind in a month.", name: "???" },
+                        { type: "textMessage", text: "Why are you doing this? What did we do to you?", name: "You" },
+                        { type: "textMessage", text: "Truth be told, we've been affected by a terrible plague for the past few years.", name: "???" },
+                        { type: "textMessage", text: "The tribe that settled closest to you caught it first - that's why the king was so convinced that the disease originated from your species.", name: "???" },
+                        { type: "textMessage", text: "Then the king caught word that you were hiding some secret healing condensate, and concldued that you guys must have purposefully gave them this disease.", name: "???" },
+                        { type: "textMessage", text: "A healing condensate?? I've never heard of that before.", name: "You" },
+                        { type: "textMessage", text: "It came from an urban legend, but it might be worth looking into.", name: "???" },
+                        { type: "textMessage", text: "I have to go back now; I’ve been gone for too long.", name: "???" },
+                        { type: "textMessage", text: "Could you ask around, maybe someone would know about it? Maybe it could help us.", name: "???" },
+                        { who: "person", type: "walk", direction: "right"},
+                        { who: "person", type: "walk", direction: "right"},
+                        { who: "person", type: "walk", direction: "right"},
+                        { who: "person", type: "walk", direction: "right"},
+                        { who: "person", type: "walk", direction: "right"},
+                        { who: "person", type: "walk", direction: "right"},
+                        { who: "person", type: "walk", direction: "right"},
+                        { who: "person", type: "walk", direction: "right"},
+                        { who: "person", type: "walk", direction: "right"},
+                        { who: "person", type: "walk", direction: "right"},
+                        { who: "person", type: "walk", direction: "right"},
+                        { who: "person", type: "walk", direction: "right"},
+                        { who: "person", type: "walk", direction: "right"},
+                        { who: "person", type: "walk", direction: "right"},
+                        { who: "person", type: "walk", direction: "up"},
+                        { who: "person", type: "walk", direction: "right"},
+                        { who: "person", type: "walk", direction: "right"},
+                        { who: "person", type: "walk", direction: "right"},
+                        { who: "person", type: "walk", direction: "up"},
+                        { who: "person", type: "walk", direction: "right"},
+                        { who: "person", type: "walk", direction: "right"},
+                        { who: "person", type: "walk", direction: "right"},
+                        { who: "person", type: "stand", direction: "left"},
+                        { type: "textMessage", text: "...", name: "You" },
+                        { type: "removeStoryFlag", flag: "second_path" },
+                        { type: "addStoryFlag", flag: "met_human" }
                     ]
                 }
             ]

@@ -14,7 +14,7 @@ class GameObject {
             useShadow: config.useShadow,
             frameX: config.frameX || 32,
             frameY: config.frameY || 32,
-            Yoffset: config.Yoffset
+            Yoffset: config.Yoffset,
         });
 
         this.behaviorLoop = config.behaviorLoop || [];

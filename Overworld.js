@@ -100,7 +100,7 @@ class Overworld {
     }
 
     init() {
-       this.startMap(window.OverworldMaps.path);
+       this.startMap(window.OverworldMaps.blobVillage);
 
         this.bindActionInput();
         this.bindPlayerPositionCheck();
