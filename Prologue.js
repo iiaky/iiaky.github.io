@@ -17,6 +17,13 @@ class Prologue {
 
         this.source = event[this.sceneNumber].src;
         this.script = event[this.sceneNumber].events;
+
+        const sceneTransition = new SceneTransition();
+        sceneTransition.init(document.querySelector(".game-container"), () => {
+            
+            sceneTransition.fadeOut();
+        }); // THIS DONT WORK
+
         this.draw();
         
         for (let i=0; i<this.script.length; i++) {
