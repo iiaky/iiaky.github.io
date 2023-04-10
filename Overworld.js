@@ -100,7 +100,7 @@ class Overworld {
     }
 
     init() {
-       this.startMap(window.OverworldMaps.blobVillage);
+       this.startMap(window.OverworldMaps.path);
 
         this.bindActionInput();
         this.bindPlayerPositionCheck();
@@ -115,7 +115,7 @@ class Overworld {
         this.map.startCutscene([ // starts a cutscene for npc interactions - useful in path
             // { type: "prologue", scene: "intro" },
             // { who: "player", type: "walk", direction: "down" },
-             { who: "player", type: "selectCharacter" },
+            // { who: "player", type: "selectCharacter" },
             // { type: "inputName"}
             // { type: "battle" }
         ])

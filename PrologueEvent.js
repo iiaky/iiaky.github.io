@@ -7,6 +7,7 @@ class PrologueEvent {
     textMessage(resolve) {
         const message = new TextMessage({
             text: this.event.text,
+            name: this.event.name,
             onComplete: () => {
                 resolve(); // when the textMessage is "done" - we read it - we're gonna resolve the battle event
             }

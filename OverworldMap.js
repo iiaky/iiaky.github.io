@@ -166,9 +166,16 @@ window.OverworldMaps = {
                 talking: [
                     // later on in the game, they can say something else
                     {
-                        required: ["met_human"],
+                        required: ["met_human", "visited_cave"],
                         events: [
-                            { type: "textMessage", text: "A healing slime condensate? You must mean the []", name: "help i cant think of a name", facePlayer: "breadBlob"},
+                            { type: "textMessage", text: "The crystal can cure even the deadliest of diseases and the deepest wounds.", name: "help i cant think of a name", facePlayer: "breadBlob"},
+                            { type: "textMessage", text: "I fear what it might be used for...", name: "help i cant think of a name", facePlayer: "breadBlob"},
+                        ]
+                    },
+                    {
+                        required: ["met_human"], // gives visited_cave
+                        events: [
+                            { type: "textMessage", text: "A healing slime condensate? You must mean the Crystal", name: "help i cant think of a name", facePlayer: "breadBlob"},
                             { type: "textMessage", text: "You know about it? I thought it was just a myth.", name: "You" },
                             { type: "removeWall", x: 9, y: 5 },
                             { who: "breadBlob", type: "walk", direction: "left"},
@@ -187,7 +194,27 @@ window.OverworldMaps = {
                             { who: "breadBlob", type: "walk", direction: "left"},
                             { type: "textMessage", text: "C'mon, we don't have all day!", name: "help i cant think of a name", facePlayer: "breadBlob"},
                             { type: "prologue", scene: "healing_cave" },
-                            
+                            { who: "breadBlob", type: "walk", direction: "right"},
+                            { who: "breadBlob", type: "walk", direction: "right"},
+                            { who: "breadBlob", type: "walk", direction: "down"},
+                            { who: "breadBlob", type: "walk", direction: "right"},
+                            { who: "breadBlob", type: "walk", direction: "right"},
+                            { who: "breadBlob", type: "walk", direction: "down"},
+                            { who: "breadBlob", type: "walk", direction: "right"},
+                            { who: "breadBlob", type: "walk", direction: "right"},
+                            { who: "breadBlob", type: "walk", direction: "down"},
+                            { who: "breadBlob", type: "walk", direction: "right"},
+                            { who: "breadBlob", type: "walk", direction: "right"},
+                            { who: "breadBlob", type: "walk", direction: "down"},
+                            { who: "breadBlob", type: "walk", direction: "right"},
+                            { type: "textMessage", text: "I forgot to ask, but what brought this up?", name: "help i cant think of a name", facePlayer: "breadBlob"},
+                            { type: "textMessage", text: "I probably shouldn’t cause worry before I speak to the King...", name: "You (thinking)"},
+                            { type: "textMessage", text: "Oh nothing, I just overheard it from somewhere and thought I'd ask around.", name: "You"},
+                            { type: "textMessage", text: "Hmm... okay", name: "help i cant think of a name", facePlayer: "breadBlob"},
+                            { type: "textMessage", text: "Well, take care then. I'll be happy to answer any more questions.", name: "help i cant think of a name", facePlayer: "breadBlob"},
+                            { type: "textMessage", text: "Keeping our culture alive is important.", name: "help i cant think of a name", facePlayer: "breadBlob"},
+                            { type: "addWall", x: 9, y: 5 },
+                            { type: "addStoryFlag", flag: "visited_cave" }
                         ]
                     },
                     { // this is the match.talking[0] - the first object in here
@@ -217,9 +244,24 @@ window.OverworldMaps = {
                 talking: [
                     // later on in the game, they can say something else
                     {
-                        required: ["met_human", ""],
+                        required: ["met_human", "visited_cave", "saw_flower"],
                         events: [
                             { type: "textMessage", text: "??" }
+                        ]
+                    },
+                    {
+                        required: ["met_human", "visited_cave"],
+                        events: [
+                            { type: "textMessage", text: "The Crystal?", name: "Blob King", facePlayer: "king" },
+                            { type: "textMessage", text: "It's been so long... I should pay my visits to the Cave.", name: "Blob King", facePlayer: "king" },
+                            { type: "textMessage", text: "Actually, now that you mention it, maybe it could help us...", name: "Blob King", facePlayer: "king" }
+                        ]
+                    },
+                    {
+                        required: ["met_human", "saw_flower"],
+                        events: [
+                            { type: "textMessage", text: "A plagued flower?", name: "Blob King", facePlayer: "king" },
+                            { type: "textMessage", text: "I wonder what that could mean...", name: "Blob King", facePlayer: "king" },
                         ]
                     },
                     { // this is the match.talking[0] - the first object in here
@@ -383,11 +425,31 @@ window.OverworldMaps = {
         upperSrc: "images/maps/path upper.png",
         gameObjects: {
             player: new Player({
-                x: utils.withGrid(2), //10
-                y: utils.withGrid(17), //18
+                x: utils.withGrid(2), //2
+                y: utils.withGrid(17), //17
                 useShadow: true,
                 isPlayerControlled: true
-               }),
+            }),
+
+            star: new Star({
+                x: utils.withGrid(30),
+                y: utils.withGrid(16),
+                src: "images/characters/star.png",
+                talking: [
+                    {
+                        events: [
+                            { type: "textMessage", text: "A wilting flower." },
+                            { type: "textMessage", text: "Around it, the plants look decayed..." },
+                            { type: "textMessage", text: "...almost...plagued?" },
+                            { type: "textMessage", text: "It reminds you of lavender." },
+                            { type: "textMessage", text: "Perhaps you should take note of it." },
+                            { type: "addStoryFlag", flag: "saw_flower" }
+                        ]
+                    }
+                ]
+
+
+            }),
 
             person: new Player({
                 x: utils.withGrid(24),
@@ -397,17 +459,6 @@ window.OverworldMaps = {
                 frameY: 64,
                 Yoffset: 32,
                 useShadow: true,
-                animations: {
-                    "idle-up": [ [0,2] ],
-                    "idle-down": [ [0,0] ],
-                    "idle-left": [ [0,3] ],
-                    "idle-right": [ [0,1] ],
-        
-                    "walk-up" : [ [0,2], [1,2], [2,2] ],
-                    "walk-down" : [ [0,0], [1,0], [2,0] ],
-                    "walk-left" : [ [0,3], [1,3], [2,3] ],
-                    "walk-right" : [ [0,1], [1,1], [2,1] ]
-                },
                 talking: [
                     {
                         required: ["met_human"],

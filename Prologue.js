@@ -68,7 +68,6 @@ class Prologue {
 window.cutscenes = {
     intro: [ // each specified cutscene
         {   
-            required: ["pp1"],
             src: "images/cutscenes/prologue/testprologue1.png",
             events: [
                 { type: "textMessage", text: "Deep within a forest roamed a sacred blob species."},
@@ -113,11 +112,25 @@ window.cutscenes = {
     ],
     healing_cave: [
         {   
-            required: ["pp1"],
             src: "images/cutscenes/prologue/testprologue1.png",
             events: [
-                { type: "textMessage", text: "Deep within a forest roamed a sacred blob species."},
-                { type: "textMessage", text: "They preserved the peace of the land, and were undeniably cute."}, 
+                { type: "textMessage", text: "It was a tradition that existed since the dawn of our time.", name: "aaa"},
+                { type: "textMessage", text: "One every year, under the full moon, we travel to the Cave as a reminder of our purpose - we're a gift from Nature, and we have to give back.", name: "aaa"}, 
+                { type: "textMessage", text: "But ever since our rising tensions with the Tribes, this tradition has mostly been abandoned.", name: "aaa"}, 
+            ]
+        },
+        {   
+            src: "images/cutscenes/prologue/testprologue1.png",
+            events: [
+                { type: "textMessage", text: "See that structure? We give up a bit of our spirit to the Crystal, our essence; some say it’s able to cure even the deadliest of diseases.", name: "aaa"},
+                { type: "textMessage", text: "But only the King can authorize use of it. But even he’s been neglecting our traditions…", name: "aaa"}, 
+                { type: "textMessage", text: "I’m afraid it’ll fall into the wrong hands.", name: "aaa (muttering)"}, 
+            ]
+        },
+        {   
+            src: "images/cutscenes/prologue/testprologue1.png",
+            events: [
+                { type: "textMessage", text: "Let’s go back now; they'll wonder where we went", name: "aaa"}
             ]
         },
     ],
