@@ -6,7 +6,7 @@ class PlayerState {
             "second_path": true,
 
             // for testing purposes
-            "met_human": true,
+            //"met_human": true,
         }
 
         this.currentBattleScene = "scene1";

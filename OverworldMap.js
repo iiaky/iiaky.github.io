@@ -400,6 +400,8 @@ window.OverworldMaps = {
                 {
                     events: [
                         { type: "changeMap", map: "path"},
+                        { type: "addStoryFlag", flag: "met_human" },
+
                     ]
                 }
             ],
@@ -411,7 +413,7 @@ window.OverworldMaps = {
                         { type: "textMessage", text: "Try talking to the King, [name], or [name]. I'm sure they have something to say." },
                         { type: "removeWall", x: 22, y: 10 },
                         { type: "removeWall", x: 24, y: 10 },
-                        { type: "removeStoryFlag", flag: "village_start" }
+                        { type: "removeStoryFlag", flag: "village_start" },
                     ]
                 }
             ]
