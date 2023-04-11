@@ -9,6 +9,7 @@ class PlayerState {
             //"met_human": true,
         }
 
+        this.playerSrc = "";
         this.currentBattleScene = "scene1";
 
         this.ch1 = window.script[this.currentBattleScene].ch1;

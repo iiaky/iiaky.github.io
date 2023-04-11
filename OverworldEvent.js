@@ -81,7 +81,8 @@ class OverworldEvent {
                     prologueEvent.init(resolve);
                 })
             },
-            onComplete: () => {
+            onComplete: (src) => {
+                this.map
                 resolve();
             }
         })
@@ -89,10 +90,11 @@ class OverworldEvent {
     }
 
     selectCharacter(resolve) {
-        const who = this.map.gameObjects[this.event.who];
         const selectCharacter = new CharacterSelect({
             onComplete: () => {
-                who.sprite.image.src = utils.user.src;
+                Object.values(window.OverworldMaps).forEach(map => {
+                    map.gameObjects[this.event.who].sprite.image.src = window.playerState.playerSrc;
+                })
                 resolve();
             }
         })

@@ -7,10 +7,9 @@ class GameObject {
         this.y = config.y || 0;
         this.direction = config.direction || "down";
         this.isPlayerControlled = config.isPlayerControlled || false;
-        this.src = String(utils.user.src) // the src of the player, but this is being set before ...
         this.sprite = new Sprite({
             gameObject: this,
-            src: config.src || this.src || "images/characters/average cute blob.png",
+            src: config.src || window.playerState.playerSrc || "images/characters/average cute blob.png",
             useShadow: config.useShadow,
             frameX: config.frameX || 32,
             frameY: config.frameY || 32,

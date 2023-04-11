@@ -47,7 +47,7 @@ class CharacterSelect {
     checkSelect() {
         const characters = document.querySelectorAll(".character");
         characters.forEach( element => element.addEventListener("click", event => {
-            utils.user.src = event.target.getAttribute('src');
+            window.playerState.playerSrc = event.target.getAttribute('src');
             this.done();
         }, { once: true }))
     }
