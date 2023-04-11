@@ -116,7 +116,6 @@ class Overworld {
             // { type: "prologue", scene: "intro" },
             // { who: "player", type: "walk", direction: "down" },
             { who: "player", type: "selectCharacter" },
-            { type: "battle" }
         ])
     }
 }

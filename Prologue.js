@@ -18,12 +18,6 @@ class Prologue {
         this.source = event[this.sceneNumber].src;
         this.script = event[this.sceneNumber].events;
 
-        const sceneTransition = new SceneTransition();
-        sceneTransition.init(document.querySelector(".game-container"), () => {
-            
-            sceneTransition.fadeOut();
-        }); // THIS DONT WORK
-
         this.draw();
         
         for (let i=0; i<this.script.length; i++) {
@@ -135,10 +129,34 @@ window.cutscenes = {
         },
     ],
     win: [
-
+        {   
+            src: "images/cutscenes/prologue/testprologue1.png",
+            events: [ // split these into scenes
+                { type: "textMessage", text: "It turns out that the flower you saw was the cause of the plague."},
+                { type: "textMessage", text: "A poison by Nature."},
+                { type: "textMessage", text: "You and the King sought out the Human you encountered before."},
+                { type: "textMessage", text: "After negotiations with the Tribe leaders, the misunderstanding was cleared up."},
+                { type: "textMessage", text: "The King authorized use of the Crystal to heal the Tribes."},
+                { type: "textMessage", text: "Before long, the population was lively again."},
+                { type: "textMessage", text: "The Tribes helped the Blobs rebuild, and welcomed them into the community."},
+                { type: "textMessage", text: "It was difficult at first, but with time, peace was restored."},
+                { type: "textMessage", text: "Sometimes, the bravest ones are those who offer a hand first."},
+            ]
+        },
     ],
     lose: [
-        
+        {   
+            src: "images/cutscenes/prologue/testprologue1.png",
+            events: [ // split these too
+                { type: "textMessage", text: "As promised, the Tribes invaded a month later."},
+                { type: "textMessage", text: "But thanks to your warning, the Blobs were prepared to fight back."},
+                { type: "textMessage", text: "By using the Crystal to their advantage, the Blobs were able to endure all the attacks."},
+                { type: "textMessage", text: "And the Humans, who didn't expect a fight, retreated."},
+                { type: "textMessage", text: "And so begins the War of Eternity, a decade of bloodshed."},
+                { type: "textMessage", text: "The Crystal, built with love, was bent to the will of vengeance."},
+                { type: "textMessage", text: "How would things be different if both sides trusted each other?"},
+            ]
+        },
     ]
     
 }

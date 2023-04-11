@@ -81,8 +81,7 @@ class OverworldEvent {
                     prologueEvent.init(resolve);
                 })
             },
-            onComplete: (src) => {
-                this.map
+            onComplete: () => {
                 resolve();
             }
         })

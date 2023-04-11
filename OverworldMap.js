@@ -246,7 +246,21 @@ window.OverworldMaps = {
                     {
                         required: ["met_human", "visited_cave", "saw_flower"],
                         events: [
-                            { type: "textMessage", text: "??" }
+                            { type: "textMessage", text: "Oh hi! Could I ask you to retrieve the iron from the Mines?", name: "King" },
+                            { type: "textMessage", text: "We’re a little short-blobbed right now, but all the Miners should be finished soon.", name: "King" },
+                            { type: "textMessage", text: "Oh, I actually wanted to warn you that the Tribes are planning to invade in about a month.", name: "You" },
+                            { type: "textMessage", text: "A month?!? How did you hear about this?", name: "King" },
+                            { type: "textMessage", text: "I ran into a human on the path-", name: "You" },
+                            { type: "textMessage", text: "On the path?! You know you’re not supposed to go alone! You could’ve been blob-napped!", name: "King" },
+                            { type: "textMessage", text: "I know, but this human was nice! They want to stop this rivalry as much as we do!", name: "You" },
+                            { type: "textMessage", text: "You should know to never trust them!", name: "King" },
+                            { type: "textMessage", text: "They were on our land - who knows what they’ve been plotting!", name: "King" },
+                            { type: "textMessage", text: "Regardless, it’d be good to speed up our war preparations, then.", name: "King" },
+                            { type: "textMessage", text: "Uh oh…", name: "You (thinking)" },
+                            { type: "textMessage", text: "I’ll notify everyone to prepare for war in a month.", name: "King" },
+                            { type: "textMessage", text: "How can I convince him??", name: "You (internally screaming)" },
+                            { type: "battle" },
+                            // { type: "end" }
                         ]
                     },
                     {

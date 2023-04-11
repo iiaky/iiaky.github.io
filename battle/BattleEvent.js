@@ -16,6 +16,22 @@ class BattleEvent {
         message.init(this.battle.element); // the battle container to draw to the DOM
     }
 
+    prologue(resolve) {
+        const prologue = new Prologue({
+            scene: this.event.scene,
+            onNewEvent: event => {
+                return new Promise(resolve => {
+                    const prologueEvent = new PrologueEvent(event, prologue);
+                    prologueEvent.init(resolve);
+                })
+            },
+            onComplete: () => {
+                resolve();
+            }
+        })
+        prologue.init(this.battle.element)
+    }
+
     async stateChange(resolve) {
         const {caster, target, trust} = this.event; // copies the object attributes
         if (trust) {
