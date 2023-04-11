@@ -93,7 +93,7 @@ class OverworldEvent {
         const selectCharacter = new CharacterSelect({
             onComplete: () => {
                 Object.values(window.OverworldMaps).forEach(map => {
-                    map.gameObjects[this.event.who].sprite.image.src = window.playerState.playerSrc;
+                    map.gameObjects[this.event.who].sprite.image.src = utils.user.src;
                 })
                 resolve();
             }

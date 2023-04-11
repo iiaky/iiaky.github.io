@@ -44,7 +44,7 @@ class KeyboardMenu {
         // description box element
         this.descriptionElement = document.createElement("div");
         this.descriptionElement.classList.add("DescriptionBox");
-        this.descriptionElement.innerHTML = (`<p>rahh</p>`);
+        this.descriptionElement.innerHTML = (`<p>Choose a response!</p>`);
         this.descriptionElementText = this.descriptionElement.querySelector("p"); // saving a reference to the paragraph / description because it will be updated a lot (on focus)
     }
 

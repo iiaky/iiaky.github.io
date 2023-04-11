@@ -1,12 +1,10 @@
 window.Characters = {
     king: {
         name: "king ...",
-        src: "images/plant blob.png",
         actions: [ "enRes" ]
     },
     player: {
-        name: utils.user.name,
-        src: utils.user.src,
+        name: "You",
         actions: [ "ch1", "ch2" ]
     }
 }

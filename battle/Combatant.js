@@ -50,7 +50,6 @@ class Combatant {
         
         this.blobElement = document.createElement("img");
         this.blobElement.classList.add("Blob");
-        this.blobElement.setAttribute("src", this.src );
         this.blobElement.setAttribute("data-team", this.team );
 
         this.trustFills = this.hudElement.querySelectorAll(".Combatant_trust-container > rect:nth-child(2)") // saving a reference to the trust bar

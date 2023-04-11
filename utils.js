@@ -2,6 +2,10 @@
 // assisting in grid based movement
 
 const utils = {
+    user : {
+        name: "aku", // change this later
+        src: ""
+    },
     withGrid(n) {
         return n * 16; //to be used in OverworldMaps
     },

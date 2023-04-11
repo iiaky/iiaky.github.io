@@ -6,7 +6,7 @@ class Battle {
             king: new Combatant({
                 ...Characters.king,
                 team: "enemy",
-                trust: 25,
+                trust: 50,
                 maxTrust: 100
             }, this),
             player: new Combatant({
@@ -27,11 +27,11 @@ class Battle {
         this.element.classList.add("Battle");
         this.element.innerHTML = (`
             <div class = "Battle_player">
-                <img src = "${'images/characters/plant blob.png'}"/>
+                <img src = "${utils.user.src}"/>
             </div>
 
             <div class = "Battle_enemy">
-                <img src = "${'images/characters/bread blob.png'}"/>
+                <img src = "${'images/characters/king.png'}"/>
             </div>
         `)
 

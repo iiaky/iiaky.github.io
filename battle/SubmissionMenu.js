@@ -20,7 +20,7 @@ class SubmissionMenu {
             root: [
                 {
                     label: "Start battle", // what the button should say
-                    description: "Can you non-violently pursuade the king?", // or something idk descriptions lol
+                    description: "Can you restore peace?", // or something idk descriptions lol
                     handler: () => {
                         this.keyboardMenu.setOptions( this.getPages().attacks )
                     }
@@ -46,7 +46,7 @@ class SubmissionMenu {
                         }
                     }
                 }),
-                backOption
+                //backOption
             ]
         }
     }

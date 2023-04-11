@@ -42,14 +42,16 @@ class TurnCycle {
         if (maxTrust) {
             winner = "player";
             await this.onNewEvent({
-                type: "textMessage", text: `I suppose you're right, ${utils.user.name}. I'm sorry my judgement was clouded`
+                type: "textMessage", text: "You're right... my judgement was clouded."
             })
         }
         else if (minTrust) {
             winner = "enemy";
-            await this.onNewEvent({
-                type: "textMessage", text: `Stop this nonsense. We have a war to prepare for.`
-            })
+            await this.onNewEvent({ type: "textMessage", text: "Enough!", name: "King" })
+            await this.onNewEvent({ type: "textMessage", text: "You are not only disrespecting my decision, but the lives of everyone before me!", name: "King" })
+            await this.onNewEvent({ type: "textMessage", text: "We only have a limited time to prepare for war.", name: "King" })
+            await this.onNewEvent({ type: "textMessage", text: "We only have a limited time to prepare for war.", name: "King" })
+            await this.onNewEvent({ type: "textMessage", text: "Either help us, or leave!", name: "King" })
         }
 
         // do we have a winning team?
@@ -73,9 +75,18 @@ class TurnCycle {
     async init() {
         await this.onNewEvent({
             type: "textMessage",
-            text: "the battle is starting"
-        }) // then we wait for the player to acknowledge this, then start the first turn
+            text: "Can you convince the King to restore peace?"
+        }); // then we wait for the player to acknowledge this, then start the first turn
         // to get the textMessage on the screen, we need a handler for this
+        await this.onNewEvent({
+            type: "textMessage",
+            text: "The decisions you make will lead you down different paths..."
+        });
+        await this.onNewEvent({
+            type: "textMessage",
+            text: "So what do you propose we do?",
+            name: "King"
+        });
         this.turn();
     }
 }
