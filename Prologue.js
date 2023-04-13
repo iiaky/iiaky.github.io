@@ -114,7 +114,7 @@ window.cutscenes = {
             ]
         },
         {   
-            src: "images/cutscenes/prologue/testprologue1.png",
+            src: "images/cutscenes/cave/cave.png",
             events: [
                 { type: "textMessage", text: "See that structure? We give up a bit of our spirit to the Crystal, our essence; some say it’s able to cure even the deadliest of diseases.", name: "aaa"},
                 { type: "textMessage", text: "But only the King can authorize use of it. But even he’s been neglecting our traditions…", name: "aaa"}, 
@@ -130,14 +130,14 @@ window.cutscenes = {
     ],
     win: [
         {   
-            src: "images/cutscenes/prologue/testprologue1.png",
+            src: "images/cutscenes/win/flower.png",
             events: [ 
                 { type: "textMessage", text: "It turns out that the flower you saw was the cause of the plague."},
                 { type: "textMessage", text: "A poison by Nature."},
             ]
         },
         {   
-            src: "images/cutscenes/prologue/testprologue1.png",
+            src: "images/cutscenes/win/heal.png",
             events: [ 
                 { type: "textMessage", text: "You and the King sought out the Human you encountered before."},
                 { type: "textMessage", text: "After negotiations with the Tribe leaders, the misunderstanding was cleared up."},
@@ -145,14 +145,14 @@ window.cutscenes = {
             ]
         },
         {   
-            src: "images/cutscenes/prologue/testprologue1.png",
+            src: "images/cutscenes/win/rebuild.png",
             events: [ 
                 { type: "textMessage", text: "Before long, the population was lively again."},
                 { type: "textMessage", text: "The Tribes helped the Blobs rebuild, and welcomed them into the community."},
             ]
         },
         {   
-            src: "images/cutscenes/prologue/testprologue1.png",
+            src: "images/cutscenes/win/hug.png",
             events: [ 
                 { type: "textMessage", text: "It was difficult at first, but with time, peace was restored."},
                 { type: "textMessage", text: "Sometimes, the bravest ones are those who offer a hand first."},
@@ -161,29 +161,28 @@ window.cutscenes = {
     ],
     lose: [
         {   
-            src: "images/cutscenes/prologue/testprologue1.png",
+            src: "images/cutscenes/prologue/warr.png",
             events: [
                 { type: "textMessage", text: "As promised, the Tribes invaded a month later."},
                 { type: "textMessage", text: "But thanks to your warning, the Blobs were prepared to fight back."},
             ]
         },
         {   
-            src: "images/cutscenes/prologue/testprologue1.png",
+            src: "images/cutscenes/lose/corrupted.png",
             events: [
-                { type: "textMessage", text: "By using the Crystal to their advantage, the Blobs were able to endure all the attacks."},
-                { type: "textMessage", text: "And the Humans, who didn't expect a fight, retreated."},
+                { type: "textMessage", text: "And they used the Crystal to prolong the war efforts."},
+                { type: "textMessage", text: "The Crystal, once built with love, now bent to the will of vengeance."},
             ]
         },
         {   
-            src: "images/cutscenes/prologue/testprologue1.png",
+            src: "images/cutscenes/lose/blood\ river.png",
             events: [
-                { type: "textMessage", text: "And so begins the War of Eternity, a decade of bloodshed."},
+                { type: "textMessage", text: "And so begins the War of Eternity, over a decade of bloodshed."},
             ]
         },
         {   
-            src: "images/cutscenes/prologue/testprologue1.png",
+            src: "images/cutscenes/lose/blood\ river.png",
             events: [
-                { type: "textMessage", text: "The Crystal, built with love, was bent to the will of vengeance."},
                 { type: "textMessage", text: "How would things be different if both sides trusted each other?"},
             ]
         },
