@@ -6,9 +6,9 @@ class PlayerState {
             "second_path": true,
 
             // for testing purposes
-            "met_human": true,
-            "visited_cave": true,
-            "saw_flower": true,
+            // "met_human": true,
+            // "visited_cave": true,
+            // "saw_flower": true,
         }
 
         this.playerSrc = "";

@@ -62,21 +62,21 @@ class Prologue {
 window.cutscenes = {
     intro: [ // each specified cutscene
         {   
-            src: "images/cutscenes/prologue/testprologue1.png",
+            src: "images/cutscenes/prologue/nature.png",
             events: [
                 { type: "textMessage", text: "Deep within a forest roamed a sacred blob species."},
                 { type: "textMessage", text: "They preserved the peace of the land, and were undeniably cute."}, 
             ]
         },
         {
-            src: "images/maps/test\ battle.png",
+            src: "images/cutscenes/prologue/squeesh.png",
             events: [
                 { type: "textMessage", text: "They were especially welcoming to the new humans, who before long, settled down comfortably on the land." },
                 { type: "textMessage", text: "Tribes rose and fell, conquered and got overturned. Civilization was underway." },
             ]
         },
         {
-            src: "images/maps/test\ battle.png",
+            src: "images/cutscenes/prologue/human\ bad.png",
             events: [
                 { type: "textMessage", text: "But the human’s greed for power was insatiable." },
                 { type: "textMessage", text: "With each rising tribe, their relationship to the blobs became more strained." },
@@ -84,20 +84,20 @@ window.cutscenes = {
             ]
         },
         {
-            src: "images/maps/test\ battle.png",
+            src: "images/cutscenes/prologue/blob\ chop.png",
             events: [
                 { type: "textMessage", text: "In the wake of humans, the defenseless blob found themselves isolated from the nature they were supposed to protect." },
                 { type: "textMessage", text: "With their population dwindling, the remaining blobs focused their efforts on survival. " },
             ]
         },
         {
-            src: "images/maps/test\ battle.png",
+            src: "images/cutscenes/prologue/blob\ chop.png",
             events: [
                 { type: "textMessage", text: "Blinded by desperation and  a thirst for revenge, the blobs started to develop and mobilize their resources to prepare for war." },
                 { type: "textMessage", text: "Before long, the spirit of their peace was lost in the wind." }            ]
         },
         {
-            src: "images/maps/test\ battle.png",
+            src: "images/cutscenes/prologue/warr.png",
             events: [
                 { type: "textMessage", text: "That brings us to today, 2 years later. Both sides’ hostility are at an all time high." },
                 { type: "textMessage", text: "Can you find a way to preserve the peace?" }
@@ -106,7 +106,7 @@ window.cutscenes = {
     ],
     healing_cave: [
         {   
-            src: "images/cutscenes/prologue/testprologue1.png",
+            src: "images/cutscenes/cave/travelling.png",
             events: [
                 { type: "textMessage", text: "It was a tradition that existed since the dawn of our time.", name: "aaa"},
                 { type: "textMessage", text: "One every year, under the full moon, we travel to the Cave as a reminder of our purpose - we're a gift from Nature, and we have to give back.", name: "aaa"}, 
@@ -122,7 +122,7 @@ window.cutscenes = {
             ]
         },
         {   
-            src: "images/cutscenes/prologue/testprologue1.png",
+            src: "images/cutscenes/cave/travelling.png",
             events: [
                 { type: "textMessage", text: "Let’s go back now; they'll wonder where we went", name: "aaa"}
             ]
@@ -131,14 +131,29 @@ window.cutscenes = {
     win: [
         {   
             src: "images/cutscenes/prologue/testprologue1.png",
-            events: [ // split these into scenes
+            events: [ 
                 { type: "textMessage", text: "It turns out that the flower you saw was the cause of the plague."},
                 { type: "textMessage", text: "A poison by Nature."},
+            ]
+        },
+        {   
+            src: "images/cutscenes/prologue/testprologue1.png",
+            events: [ 
                 { type: "textMessage", text: "You and the King sought out the Human you encountered before."},
                 { type: "textMessage", text: "After negotiations with the Tribe leaders, the misunderstanding was cleared up."},
                 { type: "textMessage", text: "The King authorized use of the Crystal to heal the Tribes."},
+            ]
+        },
+        {   
+            src: "images/cutscenes/prologue/testprologue1.png",
+            events: [ 
                 { type: "textMessage", text: "Before long, the population was lively again."},
                 { type: "textMessage", text: "The Tribes helped the Blobs rebuild, and welcomed them into the community."},
+            ]
+        },
+        {   
+            src: "images/cutscenes/prologue/testprologue1.png",
+            events: [ 
                 { type: "textMessage", text: "It was difficult at first, but with time, peace was restored."},
                 { type: "textMessage", text: "Sometimes, the bravest ones are those who offer a hand first."},
             ]
@@ -147,12 +162,27 @@ window.cutscenes = {
     lose: [
         {   
             src: "images/cutscenes/prologue/testprologue1.png",
-            events: [ // split these too
+            events: [
                 { type: "textMessage", text: "As promised, the Tribes invaded a month later."},
                 { type: "textMessage", text: "But thanks to your warning, the Blobs were prepared to fight back."},
+            ]
+        },
+        {   
+            src: "images/cutscenes/prologue/testprologue1.png",
+            events: [
                 { type: "textMessage", text: "By using the Crystal to their advantage, the Blobs were able to endure all the attacks."},
                 { type: "textMessage", text: "And the Humans, who didn't expect a fight, retreated."},
+            ]
+        },
+        {   
+            src: "images/cutscenes/prologue/testprologue1.png",
+            events: [
                 { type: "textMessage", text: "And so begins the War of Eternity, a decade of bloodshed."},
+            ]
+        },
+        {   
+            src: "images/cutscenes/prologue/testprologue1.png",
+            events: [
                 { type: "textMessage", text: "The Crystal, built with love, was bent to the will of vengeance."},
                 { type: "textMessage", text: "How would things be different if both sides trusted each other?"},
             ]
