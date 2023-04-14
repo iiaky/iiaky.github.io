@@ -233,7 +233,7 @@ window.OverworldMaps = {
                             { type: "textMessage", text: "I’ll notify everyone to prepare for war in a month.", name: "King" },
                             { type: "textMessage", text: "How can I convince him??", name: "You (internally screaming)" },
                             { type: "battle" },
-                            // { type: "end" }
+                            { type: "end" }
                         ]
                     },
                     {

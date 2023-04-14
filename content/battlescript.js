@@ -32,7 +32,7 @@ window.script = {
             description: "To uphold the peace of the land?", // some additional info displayed in text bar
             success: [ // what happens after
                 { type: "textMessage", text: "It feels like we forgot our past.", name: "You"},
-                { type: "textMessage", text: "I was talking to [name] earlier.", name: "You"},
+                { type: "textMessage", text: "I was talking to Esther earlier.", name: "You"},
                 { type: "textMessage", text: "Do you remember the Crystal?", name: "You"},
                 { type: "stateChange", trust: 5 },
             ], // the dialogue events (?) -- "success" in actions.js
@@ -45,7 +45,7 @@ window.script = {
             description: "To uphold the peace of the land?",
             success: [
                 { type: "textMessage", text: "It feels like we forgot our past.", name: "You"},
-                { type: "textMessage", text: "I was talking to [name] earlier.", name: "You"},
+                { type: "textMessage", text: "I was talking to Esther earlier.", name: "You"},
                 { type: "textMessage", text: "Do you remember the Crystal?", name: "You"},
                 { type: "stateChange", trust: 5 },
             ],
@@ -60,7 +60,7 @@ window.script = {
             name: "I was thinking maybe we could use the Crystal-",
             description: "Suggest the idea?",
             success: [
-                { type: "textMessage", text: "We could use the Crystal-"},
+                { type: "textMessage", text: "We could use the Crystal-", name: "You"},
                 { type: "stateChange", trust: -10 },
             ],
             enemyAction: "scene3_response_usecrystal",
@@ -71,8 +71,8 @@ window.script = {
             name: "Could you tell me more?", // the actual name displayed
             description: "Learn more?", // some additional info displayed in text bar
             success: [ // what happens after
-                { type: "textMessage", text: "I feel so disconnected from our culture because of such high tensions between us and the humans."},
-                { type: "textMessage", text: "How did you remember it?"},
+                { type: "textMessage", text: "I feel so disconnected from our culture because of such high tensions between us and the humans.", name: "You"},
+                { type: "textMessage", text: "How did you remember it?", name: "You"},
                 { type: "stateChange", trust: 5 }
             ], // the dialogue events (?) -- "success" in actions.js
             enemyAction: "scene3_response_learnculture",
@@ -86,8 +86,8 @@ window.script = {
             name: "Could you tell me more about the Crystal?",
             description: "Learn more?",
             success: [
-                { type: "textMessage", text: "I feel so disconnected from our culture because of such high tensions between us and the humans."},
-                { type: "textMessage", text: "How did you remember it?"},
+                { type: "textMessage", text: "I feel so disconnected from our culture because of such high tensions between us and the humans.", name: "You"},
+                { type: "textMessage", text: "How did you remember it?", name: "You"},
                 { type: "stateChange", trust: 5 }
             ],
             enemyAction: "scene3_response_learnculture",
@@ -98,8 +98,8 @@ window.script = {
             name: "Not exactly...", // the actual name displayed
             description: "Ask to cure the plague?", // some additional info displayed in text bar
             success: [ // what happens after
-                { type: "textMessage", text: "I was thinking we could use it to help the Humans."},
-                { type: "textMessage", text: "Since they're suffering through a plague, it could cure them!"},
+                { type: "textMessage", text: "I was thinking we could use it to help the Humans.", name: "You"},
+                { type: "textMessage", text: "Since they're suffering through a plague, it could cure them!", name: "You"},
                 { type: "stateChange", trust: -5 }
             ], // the dialogue events (?) -- "success" in actions.js
             enemyAction: "scene4_response_wtf",
@@ -113,8 +113,8 @@ window.script = {
             name: "Would you consider helping the Humans?",
             description: "Learn more?",
             success: [
-                { type: "textMessage", text: "I was thinking we could use the Crystal to help the Humans."},
-                { type: "textMessage", text: "Since they're suffering through a plague, it could cure them!"},
+                { type: "textMessage", text: "I was thinking we could use the Crystal to help the Humans.", name: "You"},
+                { type: "textMessage", text: "Since they're suffering through a plague, it could cure them!", name: "You"},
                 { type: "stateChange", trust: -5 }
             ],
             enemyAction: "scene4_response_wtf",
@@ -125,8 +125,8 @@ window.script = {
             name: "Maybe the whole rivalry is a huge misunderstanding.", // the actual name displayed
             description: "It feels like we're drifting away from our ancestors the more this goes on...", // some additional info displayed in text bar
             success: [ // what happens after
-                { type: "textMessage", text: "I wish there was a peaceful way for us to resolve our conflicts."},
-                { type: "textMessage", text: "Is war the only solution?"}
+                { type: "textMessage", text: "I wish there was a peaceful way for us to resolve our conflicts.", name: "You"},
+                { type: "textMessage", text: "Is war the only solution?", name: "You"}
             ], // the dialogue events (?) -- "success" in actions.js
             enemyAction: "scene5_response_war",
             goTo: "scene6" // <-- can be what is logged in battlestate
@@ -139,8 +139,8 @@ window.script = {
             name: "Sometimes we have to make sacrifices!",
             description: "Ever heard of \"being the bigger blob?\"",
             success: [
-                { type: "textMessage", text: "I was thinking we could use the Crystal to help the Humans."},
-                { type: "textMessage", text: "Since they're suffering through a plague, it could cure them!"},
+                { type: "textMessage", text: "I was thinking we could use the Crystal to help the Humans.", name: "You"},
+                { type: "textMessage", text: "Since they're suffering through a plague, it could cure them!", name: "You"},
                 { type: "stateChange", trust: -15 }
             ],
             enemyAction: "scene6_response_rage",
@@ -151,11 +151,11 @@ window.script = {
             name: "I understand", // the actual name displayed
             description: "But our ancestors believed in us", // some additional info displayed in text bar
             success: [ // what happens after
-                { type: "textMessage", text: "I understand how you feel, I'm angry at and terrified of them too."},
-                { type: "textMessage", text: "But rage is blinding."},
-                { type: "textMessage", text: "Our ancestors trusted us - they trusted that we could uphold the peace of the land."},
-                { type: "textMessage", text: "Using the Crystal for our own, bloodthirsty benefit... wouldn't that be a betrayal to them?"},
-                { type: "textMessage", text: "It's not what they would've wanted!"},
+                { type: "textMessage", text: "I understand how you feel, I'm angry at and terrified of them too.", name: "You"},
+                { type: "textMessage", text: "But rage is blinding.", name: "You"},
+                { type: "textMessage", text: "Our ancestors trusted us - they trusted that we could uphold the peace of the land.", name: "You"},
+                { type: "textMessage", text: "Using the Crystal for our own, bloodthirsty benefit... wouldn't that be a betrayal to them?", name: "You"},
+                { type: "textMessage", text: "It's not what they would've wanted!", name: "You"},
                 { type: "stateChange", trust: 5 },
             ], // the dialogue events (?) -- "success" in actions.js
             enemyAction: "scene6_response_consideration",
@@ -169,8 +169,8 @@ window.script = {
             name: "Won't you give peace a chance?",
             description: "I'm sure that's what our ancestors would've wanted.",
             success: [
-                { type: "textMessage", text: "Won't you give peace a chance?"},
-                { type: "textMessage", text: "I'm sure that's what our ancestors would've wanted."},
+                { type: "textMessage", text: "Won't you give peace a chance?", name: "You"},
+                { type: "textMessage", text: "I'm sure that's what our ancestors would've wanted.", name: "You"},
                 { type: "stateChange", trust: 100 }
             ],
             enemyAction: "",
@@ -181,7 +181,7 @@ window.script = {
             name: "I understand", // the actual name displayed
             description: "But our ancestors believed in us", // some additional info displayed in text bar
             success: [ // what happens after
-                { type: "textMessage", text: "I understand how you feel, I'm angry at and terrified of them too."},
+                { type: "textMessage", text: "I understand how you feel, I'm angry at and terrified of them too.", name: "You"},
             ], // the dialogue events (?) -- "success" in actions.js
             enemyAction: "",
             goTo: "" // <-- can be what is logged in battlestate
@@ -194,8 +194,8 @@ window.script = {
             name: "An eye for an eye...",
             description: "...makes the whole world blind.",
             success: [
-                { type: "textMessage", text: "Going to war will only make things worse!"},
-                { type: "textMessage", text: "I promise that we can end this in a peaceful way!"},
+                { type: "textMessage", text: "Going to war will only make things worse!", name: "You"},
+                { type: "textMessage", text: "I promise that we can end this in a peaceful way!", name: "You"},
                 { type: "stateChange", trust: -50 }
             ],
             enemyAction: "",
@@ -206,8 +206,8 @@ window.script = {
             name: "Can't you see that doing this will just cause problems?", // the actual name displayed
             description: "You're bordering on dangerous territory...", // some additional info displayed in text bar
             success: [ // what happens after
-                { type: "textMessage", text: "Going to war will only make things worse!"},
-                { type: "textMessage", text: "I promise that we can end this in a peaceful way!"},
+                { type: "textMessage", text: "Going to war will only make things worse!", name: "You"},
+                { type: "textMessage", text: "I promise that we can end this in a peaceful way!", name: "You"},
                 { type: "stateChange", trust: -50 }
             ], // the dialogue events (?) -- "success" in actions.js
             enemyAction: "",

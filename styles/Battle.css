@@ -5,7 +5,7 @@
     right: 0;
     top: 0;
     bottom: 0;
-    background-image: url('../images/maps/test\ battle.png');
+    background-image: url('../images/maps/battle.png');
     background-size: cover;
     image-rendering: pixelated;
 }
@@ -23,8 +23,8 @@
 }
 
 .Battle_player {
-    bottom: 64px;
-    left: 64px;
+    bottom: 65px;
+    left: 68px;
 }
 
 .Battle_player img {
@@ -32,8 +32,8 @@
 }
 
 .Battle_enemy {
-    top: 32px;
-    right: 64px;
+    top: 23px;
+    right: 80px;
 }
 
 /* Animations */

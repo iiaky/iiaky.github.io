@@ -43,15 +43,16 @@ class TurnCycle {
             winner = "player";
             await this.onNewEvent({ type: "textMessage", text: "You're right... my judgement was clouded." })
             await this.onNewEvent({ type: "prologue", scene: "win" })
+            await this.onNewEvent({ type: "end" })
         }
         else if (minTrust) {
             winner = "enemy";
             await this.onNewEvent({ type: "textMessage", text: "Enough!", name: "King" })
             await this.onNewEvent({ type: "textMessage", text: "You are not only disrespecting my decision, but the lives of everyone before me!", name: "King" })
             await this.onNewEvent({ type: "textMessage", text: "We only have a limited time to prepare for war.", name: "King" })
-            await this.onNewEvent({ type: "textMessage", text: "We only have a limited time to prepare for war.", name: "King" })
             await this.onNewEvent({ type: "textMessage", text: "Either help us, or leave!", name: "King" })
             await this.onNewEvent({ type: "prologue", scene: "lose" })
+            await this.onNewEvent({ type: "end" })
         }
 
         // do we have a winning team?

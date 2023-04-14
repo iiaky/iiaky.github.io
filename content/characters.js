@@ -1,6 +1,6 @@
 window.Characters = {
     king: {
-        name: "king ...",
+        name: "King",
         actions: [ "enRes" ]
     },
     player: {
