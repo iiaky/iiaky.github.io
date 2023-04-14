@@ -178,13 +178,8 @@ window.OverworldMaps = {
                             { type: "textMessage", text: "A healing slime condensate? You must mean the Crystal", name: "Esther", facePlayer: "breadBlob"},
                             { type: "textMessage", text: "You know about it? I thought it was just a myth.", name: "You" },
                             { type: "removeWall", x: 9, y: 5 },
-                            { who: "breadBlob", type: "walk", direction: "left"},
-                            { who: "breadBlob", type: "walk", direction: "up"},
                             { type: "textMessage", text: "Oh not at all. Come with me, let me show you something that's been long forgotten.", name: "Esther", facePlayer: "breadBlob"},
-                            { type: "textMessage", text: "C'mon, we don't have all day!", name: "Esther", facePlayer: "breadBlob"},
                             { type: "prologue", scene: "healing_cave" },
-                            { who: "breadBlob", type: "walk", direction: "down"},
-                            { who: "breadBlob", type: "walk", direction: "right"},
                             { type: "textMessage", text: "I forgot to ask, but what brought this up?", name: "Esther", facePlayer: "breadBlob"},
                             { type: "textMessage", text: "I probably shouldn’t cause worry before I speak to the King...", name: "You (thinking)"},
                             { type: "textMessage", text: "Oh nothing, I just overheard it from somewhere and thought I'd ask around.", name: "You"},
@@ -244,24 +239,24 @@ window.OverworldMaps = {
                     {
                         required: ["met_human", "visited_cave"],
                         events: [
-                            { type: "textMessage", text: "The Crystal?", name: "Blob King", facePlayer: "king" },
-                            { type: "textMessage", text: "It's been so long... I should pay my visits to the Cave.", name: "Blob King", facePlayer: "king" },
-                            { type: "textMessage", text: "Actually, now that you mention it, maybe it could help us...", name: "Blob King", facePlayer: "king" }
+                            { type: "textMessage", text: "The Crystal?", name: "King", facePlayer: "king" },
+                            { type: "textMessage", text: "It's been so long... I should pay my visits to the Cave.", name: "King", facePlayer: "king" },
+                            { type: "textMessage", text: "Actually, now that you mention it, maybe it could help us...", name: "King", facePlayer: "king" }
                         ]
                     },
                     {
                         required: ["met_human", "saw_flower"],
                         events: [
-                            { type: "textMessage", text: "A plagued flower?", name: "Blob King", facePlayer: "king" },
-                            { type: "textMessage", text: "I wonder what that could mean...", name: "Blob King", facePlayer: "king" },
+                            { type: "textMessage", text: "A plagued flower?", name: "King", facePlayer: "king" },
+                            { type: "textMessage", text: "I wonder what that could mean...", name: "King", facePlayer: "king" },
                         ]
                     },
                     { // this is the match.talking[0] - the first object in here
                         events: [
-                            { type: "textMessage", text: "We've been at war with the humans for 10 years now.", name: "Blob King", facePlayer: "king" }, // the id of the blob that should face the player
-                            { type: "textMessage", text: "If this continues... I fear what's to come.", name: "Blob King", facePlayer: "king" }, // the id of the blob that should face the player
-                            { type: "textMessage", text: "But we must avenge ourselves, our ancestors, our legacy, and our past.", name: "Blob King", facePlayer: "king" }, // the id of the blob that should face the player
-                            { type: "textMessage", text: "Let this war end with me!", name: "Blob King", facePlayer: "king" }, // the id of the blob that should face the player
+                            { type: "textMessage", text: "We've been at war with the Tribes for 10 years now.", name: "King", facePlayer: "king" }, // the id of the blob that should face the player
+                            { type: "textMessage", text: "If this continues... I fear what's to come.", name: "King", facePlayer: "king" }, // the id of the blob that should face the player
+                            { type: "textMessage", text: "But we must avenge ourselves, our ancestors, our legacy, and our past.", name: "King", facePlayer: "king" }, // the id of the blob that should face the player
+                            { type: "textMessage", text: "Let this war end with me!", name: "King", facePlayer: "king" }, // the id of the blob that should face the player
                         ]
                     }
                     
@@ -597,12 +592,12 @@ window.OverworldMaps = {
                         { type: "textMessage", text: "Please listen to what I have to say, I promise it's urgent. I'm not here to hurt you!", name: "???", facePlayer: "person" },
                         { type: "textMessage", text: "Why would I trust you?", name: "You" },
                         { type: "textMessage", text: "Would this help convince you?", name: "???" },
-                        { type: "textMessage", text: "The mysterious human hands you an official notice signed by their king." },
-                        { type: "textMessage", text: "The king, all the tribes, actually, is planning to completely wipe your your kind in a month.", name: "???" },
+                        { type: "textMessage", text: "The mysterious human hands you an official notice signed by their leader." },
+                        { type: "textMessage", text: "The leader, all the tribes, actually, is planning to completely wipe your your kind in a month.", name: "???" },
                         { type: "textMessage", text: "Why are you doing this? What did we do to you?", name: "You" },
                         { type: "textMessage", text: "Truth be told, we've been affected by a terrible plague for the past few years.", name: "???" },
                         { type: "textMessage", text: "The tribe that settled closest to you caught it first - that's why the king was so convinced that the disease originated from your species.", name: "???" },
-                        { type: "textMessage", text: "Then the king caught word that you were hiding some secret healing condensate, and concldued that you guys must have purposefully gave them this disease.", name: "???" },
+                        { type: "textMessage", text: "Then the leader caught word that you were hiding some secret healing condensate, and concldued that you guys must have purposefully gave them this disease.", name: "???" },
                         { type: "textMessage", text: "A healing condensate?? I've never heard of that before.", name: "You" },
                         { type: "textMessage", text: "It came from an urban legend, but it might be worth looking into.", name: "???" },
                         { type: "textMessage", text: "I have to go back now; I’ve been gone for too long.", name: "???" },
