@@ -1,0 +1,21 @@
+.end_screen {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: black;
+    text-align: center;
+}
+
+.end_screen > .container {
+    display: flex;
+}
+
+.end_screen > .container > * {
+    flex: 1 0
+}
+
+.end_screen p {
+    margin: 1px;
+}

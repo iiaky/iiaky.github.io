@@ -110,6 +110,11 @@ class OverworldEvent {
         battle.init(document.querySelector(".game-container"))
     }
 
+    end(resolve) {
+        const end = new End()
+        end.init(document.querySelector(".game-container"))
+    }
+
     addStoryFlag(resolve) {
         window.playerState.storyFlags[this.event.flag] = true; // the event is the {} passed in the events[] in OverworldMap, and the .flag acceess the "flag" part
         resolve();

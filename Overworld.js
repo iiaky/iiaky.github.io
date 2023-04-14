@@ -104,7 +104,7 @@ class Overworld {
         this.titleScreen = new TitleScreen();
         await this.titleScreen.init(document.querySelector(".game-container")); // titleScreen.init() returns a promise
 
-       this.startMap(window.OverworldMaps.path);
+       this.startMap(window.OverworldMaps.blobVillage);
 
         this.bindActionInput();
         this.bindPlayerPositionCheck();
@@ -117,7 +117,7 @@ class Overworld {
         this.startGameLoop();
         // drawing (copying) the map pixel data (from the image) onto the canvas
         this.map.startCutscene([ // starts a cutscene for npc interactions - useful in path
-            //{ type: "prologue", scene: "intro" },
+            { type: "prologue", scene: "intro" },
             { who: "player", type: "selectCharacter" },
         ])
     }
