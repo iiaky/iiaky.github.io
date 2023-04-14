@@ -1,0 +1,45 @@
+.TitleScreen {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+
+.TitleScreen > .container {
+    position: relative;
+    text-align: center;
+    padding: auto;
+}
+
+.TitleScreen > .KeyboardMenu {
+    position: relative;
+    margin: auto;
+    left: 0;
+    right: 0;
+    bottom: -10%;
+}
+
+.TitleScreen button {
+    text-align: center;
+    padding-left: 0;
+    font-size: 8px;
+
+    backdrop-filter: blur(1px);
+}
+
+.TitleScreen .DescriptionBox {
+    text-align: center;
+    backdrop-filter: blur(1px);
+}
+
+.TitleScreen > img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    /* transform: scale(0.5) translateY(-150%); */
+
+    object-fit: cover;
+}
+
+

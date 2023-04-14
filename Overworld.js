@@ -99,7 +99,11 @@ class Overworld {
         this.map.mountObjects();
     }
 
-    init() {
+    async init() {
+        // load the title screen
+        this.titleScreen = new TitleScreen();
+        await this.titleScreen.init(document.querySelector(".game-container")); // titleScreen.init() returns a promise
+
        this.startMap(window.OverworldMaps.blobVillage);
 
         this.bindActionInput();
