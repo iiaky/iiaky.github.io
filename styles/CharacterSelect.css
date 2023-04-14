@@ -18,8 +18,10 @@ body, h3, p {
 
 .character-select {
     position: absolute;
-    display: inline-grid;
+    width: auto;
+    display: grid;
     grid-template-columns: auto auto auto;
+    grid-auto-columns: 1fr;
     align-content: center;
 
 }

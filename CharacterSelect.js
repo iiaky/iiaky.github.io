@@ -27,8 +27,8 @@ class CharacterSelect {
                     </div>
                     <p>plant blob</p>
                     <div class="desc">
-                        <p>◦ your average cute blob</p>
-                        <p>◦ very squish, +10 squish points</p>
+                        <p>◦ eats sun</p>
+                        <p>◦ wash before consumption</p>
                     </div>
                 </div>
 
@@ -37,7 +37,10 @@ class CharacterSelect {
                         <img src = "${'images/characters/bread blob.png'}"/>
                     </div>
                     <p>bread blob</p>
-                    <p>desc desc desc desc desc desc desc desc </p>
+                    <div class="desc">
+                        <p>◦ average milk bread enjoyer</p>
+                        <p>◦ nom nom :3</p>
+                    </div>
                 </div>
             </div>
         `)
