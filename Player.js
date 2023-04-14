@@ -39,7 +39,6 @@ class Player extends GameObject {
 
         if (behavior.type === "walk") { // now able to fire a walk command without needing it to come from the arrow key - you can call startBehavior() on the player itself
             if (state.map.isSpaceTaken(this.x, this.y, this.direction)){
-
                 behavior.retry && setTimeout(() => {
                     this.startBehavior(state, behavior)
                 }, 10)

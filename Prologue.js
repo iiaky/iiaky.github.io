@@ -108,23 +108,23 @@ window.cutscenes = {
         {   
             src: "images/cutscenes/cave/travelling.png",
             events: [
-                { type: "textMessage", text: "It was a tradition that existed since the dawn of our time.", name: "aaa"},
-                { type: "textMessage", text: "One every year, under the full moon, we travel to the Cave as a reminder of our purpose - we're a gift from Nature, and we have to give back.", name: "aaa"}, 
-                { type: "textMessage", text: "But ever since our rising tensions with the Tribes, this tradition has mostly been abandoned.", name: "aaa"}, 
+                { type: "textMessage", text: "It was a tradition that existed since the dawn of our time.", name: "Esther"},
+                { type: "textMessage", text: "One every year, under the full moon, we travel to the Cave as a reminder of our purpose - we're a gift from Nature, and we have to give back.", name: "Esther"}, 
+                { type: "textMessage", text: "But ever since our rising tensions with the Tribes, this tradition has mostly been abandoned.", name: "Esther"}, 
             ]
         },
         {   
             src: "images/cutscenes/cave/cave.png",
             events: [
-                { type: "textMessage", text: "See that structure? We give up a bit of our spirit to the Crystal, our essence; some say it’s able to cure even the deadliest of diseases.", name: "aaa"},
-                { type: "textMessage", text: "But only the King can authorize use of it. But even he’s been neglecting our traditions…", name: "aaa"}, 
-                { type: "textMessage", text: "I’m afraid it’ll fall into the wrong hands.", name: "aaa (muttering)"}, 
+                { type: "textMessage", text: "See that structure? We give up a bit of our spirit to the Crystal, our essence; some say it’s able to cure even the deadliest of diseases.", name: "Esther"},
+                { type: "textMessage", text: "But only the King can authorize use of it. But even he’s been neglecting our traditions…", name: "Esther"}, 
+                { type: "textMessage", text: "I’m afraid it’ll fall into the wrong hands.", name: "Esther (muttering)"}, 
             ]
         },
         {   
             src: "images/cutscenes/cave/travelling.png",
             events: [
-                { type: "textMessage", text: "Let’s go back now; they'll wonder where we went", name: "aaa"}
+                { type: "textMessage", text: "Let’s go back now; they'll wonder where we went", name: "Esther"}
             ]
         },
     ],

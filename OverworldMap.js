@@ -168,61 +168,39 @@ window.OverworldMaps = {
                     {
                         required: ["met_human", "visited_cave"],
                         events: [
-                            { type: "textMessage", text: "The crystal can cure even the deadliest of diseases and the deepest wounds.", name: "help i cant think of a name", facePlayer: "breadBlob"},
-                            { type: "textMessage", text: "I fear what it might be used for...", name: "help i cant think of a name", facePlayer: "breadBlob"},
+                            { type: "textMessage", text: "The crystal can cure even the deadliest of diseases and the deepest wounds.", name: "Esther", facePlayer: "breadBlob"},
+                            { type: "textMessage", text: "I fear what it might be used for...", name: "Esther", facePlayer: "breadBlob"},
                         ]
                     },
                     {
                         required: ["met_human"], // gives visited_cave
                         events: [
-                            { type: "textMessage", text: "A healing slime condensate? You must mean the Crystal", name: "help i cant think of a name", facePlayer: "breadBlob"},
+                            { type: "textMessage", text: "A healing slime condensate? You must mean the Crystal", name: "Esther", facePlayer: "breadBlob"},
                             { type: "textMessage", text: "You know about it? I thought it was just a myth.", name: "You" },
                             { type: "removeWall", x: 9, y: 5 },
                             { who: "breadBlob", type: "walk", direction: "left"},
                             { who: "breadBlob", type: "walk", direction: "up"},
-                            { type: "textMessage", text: "Oh not at all. Come with me, let me show you something that's been long forgotten.", name: "help i cant think of a name", facePlayer: "breadBlob"},
-                            { who: "breadBlob", type: "walk", direction: "left"},
-                            { who: "breadBlob", type: "walk", direction: "left"},
-                            { who: "breadBlob", type: "walk", direction: "up"},
-                            { who: "breadBlob", type: "walk", direction: "left"},
-                            { who: "breadBlob", type: "walk", direction: "left"},
-                            { who: "breadBlob", type: "walk", direction: "up"},
-                            { who: "breadBlob", type: "walk", direction: "left"},
-                            { who: "breadBlob", type: "walk", direction: "left"},
-                            { who: "breadBlob", type: "walk", direction: "up"},
-                            { who: "breadBlob", type: "walk", direction: "left"},
-                            { who: "breadBlob", type: "walk", direction: "left"},
-                            { type: "textMessage", text: "C'mon, we don't have all day!", name: "help i cant think of a name", facePlayer: "breadBlob"},
+                            { type: "textMessage", text: "Oh not at all. Come with me, let me show you something that's been long forgotten.", name: "Esther", facePlayer: "breadBlob"},
+                            { type: "textMessage", text: "C'mon, we don't have all day!", name: "Esther", facePlayer: "breadBlob"},
                             { type: "prologue", scene: "healing_cave" },
-                            { who: "breadBlob", type: "walk", direction: "right"},
-                            { who: "breadBlob", type: "walk", direction: "right"},
                             { who: "breadBlob", type: "walk", direction: "down"},
                             { who: "breadBlob", type: "walk", direction: "right"},
-                            { who: "breadBlob", type: "walk", direction: "right"},
-                            { who: "breadBlob", type: "walk", direction: "down"},
-                            { who: "breadBlob", type: "walk", direction: "right"},
-                            { who: "breadBlob", type: "walk", direction: "right"},
-                            { who: "breadBlob", type: "walk", direction: "down"},
-                            { who: "breadBlob", type: "walk", direction: "right"},
-                            { who: "breadBlob", type: "walk", direction: "right"},
-                            { who: "breadBlob", type: "walk", direction: "down"},
-                            { who: "breadBlob", type: "walk", direction: "right"},
-                            { type: "textMessage", text: "I forgot to ask, but what brought this up?", name: "help i cant think of a name", facePlayer: "breadBlob"},
+                            { type: "textMessage", text: "I forgot to ask, but what brought this up?", name: "Esther", facePlayer: "breadBlob"},
                             { type: "textMessage", text: "I probably shouldn’t cause worry before I speak to the King...", name: "You (thinking)"},
                             { type: "textMessage", text: "Oh nothing, I just overheard it from somewhere and thought I'd ask around.", name: "You"},
-                            { type: "textMessage", text: "Hmm... okay", name: "help i cant think of a name", facePlayer: "breadBlob"},
-                            { type: "textMessage", text: "Well, take care then. I'll be happy to answer any more questions.", name: "help i cant think of a name", facePlayer: "breadBlob"},
-                            { type: "textMessage", text: "Keeping our culture alive is important.", name: "help i cant think of a name", facePlayer: "breadBlob"},
+                            { type: "textMessage", text: "Hmm... okay", name: "Esther", facePlayer: "breadBlob"},
+                            { type: "textMessage", text: "Well, take care then. I'll be happy to answer any more questions.", name: "Esther", facePlayer: "breadBlob"},
+                            { type: "textMessage", text: "Keeping our culture alive is important.", name: "Esther", facePlayer: "breadBlob"},
                             { type: "addWall", x: 9, y: 5 },
                             { type: "addStoryFlag", flag: "visited_cave" }
                         ]
                     },
                     { // this is the match.talking[0] - the first object in here
                         events: [
-                            { type: "textMessage", text: "I miss the olden days...", name: "idk", facePlayer: "breadBlob" }, // the id of the blob that should face the player
-                            { type: "textMessage", text: "where humans and blobs lived in peace.", name: "idk" },
-                            { type: "textMessage", text: "I remember playing dodgeball with the children...", name: "idk" },
-                            { type: "textMessage", text: "Oh, what I would give to bring those days back.", name: "idk" },
+                            { type: "textMessage", text: "I miss the olden days...", name: "Esther", facePlayer: "breadBlob" }, // the id of the blob that should face the player
+                            { type: "textMessage", text: "where humans and blobs lived in peace.", name: "Esther" },
+                            { type: "textMessage", text: "I remember playing dodgeball with the children...", name: "Esther" },
+                            { type: "textMessage", text: "Oh, what I would give to bring those days back.", name: "Esther" },
                         ]
                     }
                 ]
@@ -414,8 +392,6 @@ window.OverworldMaps = {
                 {
                     events: [
                         { type: "changeMap", map: "path"},
-                        { type: "addStoryFlag", flag: "met_human" },
-
                     ]
                 }
             ],
@@ -423,8 +399,8 @@ window.OverworldMaps = {
                 {
                     required: ["village_start"],
                     events: [
-                        { type: "textMessage", text: "Careful, don't venture out too far..." },
-                        { type: "textMessage", text: "Try talking to the King, [name], or [name]. I'm sure they have something to say." },
+                        { type: "textMessage", text: "A path? Careful, don't venture out too far..." },
+                        { type: "textMessage", text: "Let's see what the King or Esther has to say." },
                         { type: "removeWall", x: 22, y: 10 },
                         { type: "removeWall", x: 24, y: 10 },
                         { type: "removeStoryFlag", flag: "village_start" },
@@ -579,6 +555,9 @@ window.OverworldMaps = {
                 {
                     events: [
                         { type: "changeMap", map: "blobVillage"},
+                        { type: "addStoryFlag", flag: "met_human" }
+
+
                     ]
                 }
             ],
@@ -591,7 +570,7 @@ window.OverworldMaps = {
                         { who: "person", type: "walk", direction: "left"},
                         { who: "person", type: "stand", direction: "down"},
                         { type: "textMessage", text: "..." },
-                        { type: "textMessage", text: "What's that sound?" },
+                        { type: "textMessage", text: "What's that shining object?" },
                         { type: "removeStoryFlag", flag: "first_path" }
                     ]
                 }
@@ -651,7 +630,7 @@ window.OverworldMaps = {
                         { who: "person", type: "walk", direction: "right"},
                         { who: "person", type: "walk", direction: "right"},
                         { who: "person", type: "stand", direction: "left"},
-                        { type: "textMessage", text: "...", name: "You" },
+                        { type: "textMessage", text: "...?", name: "You" },
                         { type: "removeStoryFlag", flag: "second_path" },
                         { type: "addStoryFlag", flag: "met_human" }
                     ]
