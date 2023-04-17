@@ -103,15 +103,15 @@ class OverworldEvent {
     battle(resolve) {
         // maybe call battle instrcutions here - either through dialogue or another function
         const battle = new Battle({
-            onComplete: (didWin) => {
-                resolve(didWin ? "WON_BATTLE" : "LOST_BATTLE");
+            onComplete: () => {
+                resolve();
             }
         })
         battle.init(document.querySelector(".game-container"))
     }
 
-    end(resolve) {
-        const end = new End()
+    end() {
+        const end = new End();
         end.init(document.querySelector(".game-container"))
     }
 

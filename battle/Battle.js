@@ -59,7 +59,7 @@ class Battle {
                 // update some storyline
 
                 this.element.remove(); // removing the battle dom
-                this.onComplete(winner === "player"); // this "calls back" to the battle function in OverworldEvent
+                this.onComplete(); // this "calls back" to the battle function in OverworldEvent
                                                       // in that we can access whatever value is put through BACK IN the original function
             }
         })

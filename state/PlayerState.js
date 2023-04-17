@@ -12,7 +12,7 @@ class PlayerState {
         }
 
         this.playerSrc = "";
-        this.currentBattleScene = "scene1";
+        this.currentBattleScene = "decision";
 
         this.ch1 = window.script[this.currentBattleScene].ch1;
         this.ch2 = window.script[this.currentBattleScene].ch2;

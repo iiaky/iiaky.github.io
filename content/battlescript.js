@@ -1,5 +1,27 @@
 window.script = {
     // scene 1 - case of []
+    decision: {
+        ch1: {
+            name: "Convince the King to help the Tribes",
+            description: "Will you choose peace?", 
+            success: [
+            ],
+            enemyAction: "filler",
+            goTo: "scene1"
+        },
+        ch2: {
+            name: "Total war! The Tribes deserve it!",
+            description: "Or war?", 
+            success: [
+                { type: "textMessage", text: "We have to start preparing! We don't have much time left.", name: "You" },
+                { type: "textMessage", text: "The Tribes will invade in a month, and we can't lose against them!", name: "You" },
+                { type: "textMessage", text: "Their crimes against us will not go overlooked.", name: "You" },
+                { type: "textMessage", text: "Let us take revenge!", name: "You" },
+            ],
+            enemyAction: "war_decision",
+            goTo: "war_decision"
+        },
+    },
     scene1: {
         ch1: {
             name: "The humans aren't in their best state right now...", // the actual name displayed
@@ -148,7 +170,7 @@ window.script = {
         },
 
         ch2: {
-            name: "I understand", // the actual name displayed
+            name: "I understand your view", // the actual name displayed
             description: "But our ancestors believed in us", // some additional info displayed in text bar
             success: [ // what happens after
                 { type: "textMessage", text: "I understand how you feel, I'm angry at and terrified of them too.", name: "You"},
@@ -173,18 +195,18 @@ window.script = {
                 { type: "textMessage", text: "I'm sure that's what our ancestors would've wanted.", name: "You"},
                 { type: "stateChange", trust: 100 }
             ],
-            enemyAction: "",
-            goTo: ""
+            enemyAction: "filler",
+            goTo: "filler"
         },
 
         ch2: {
-            name: "I understand", // the actual name displayed
-            description: "But our ancestors believed in us", // some additional info displayed in text bar
-            success: [ // what happens after
-                { type: "textMessage", text: "I understand how you feel, I'm angry at and terrified of them too.", name: "You"},
-            ], // the dialogue events (?) -- "success" in actions.js
-            enemyAction: "",
-            goTo: "" // <-- can be what is logged in battlestate
+            name: "",
+            description: "",
+            success: [
+              
+            ],
+            enemyAction: "filler",
+            goTo: "scene7" // <-- can be what is logged in battlestate
         },
     },
     
@@ -196,10 +218,14 @@ window.script = {
             success: [
                 { type: "textMessage", text: "Going to war will only make things worse!", name: "You"},
                 { type: "textMessage", text: "I promise that we can end this in a peaceful way!", name: "You"},
+                { type: "textMessage", text: "Enough!", name: "King" },
+                { type: "textMessage", text: "You are not only disrespecting my decision, but the lives of everyone before me!", name: "King" },
+                { type: "textMessage", text: "We only have a limited time to prepare for war.", name: "King" },
+                { type: "textMessage", text: "Either help us, or leave!", name: "King" },
                 { type: "stateChange", trust: -50 }
             ],
-            enemyAction: "",
-            goTo: ""
+            enemyAction: "filler",
+            goTo: "filler"
         },
 
         ch2: {
@@ -208,16 +234,82 @@ window.script = {
             success: [ // what happens after
                 { type: "textMessage", text: "Going to war will only make things worse!", name: "You"},
                 { type: "textMessage", text: "I promise that we can end this in a peaceful way!", name: "You"},
+                { type: "textMessage", text: "Enough!", name: "King" },
+                { type: "textMessage", text: "You are not only disrespecting my decision, but the lives of everyone before me!", name: "King" },
+                { type: "textMessage", text: "We only have a limited time to prepare for war.", name: "King" },
+                { type: "textMessage", text: "Either help us, or leave!", name: "King" },
                 { type: "stateChange", trust: -50 }
             ], // the dialogue events (?) -- "success" in actions.js
-            enemyAction: "",
-            goTo: "" // <-- can be what is logged in battlestate
+            enemyAction: "filler",
+            goTo: "filler" // <-- can be what is logged in battlestate
         },
     },
+
+    war_decision: {
+        ch1: {
+            name: "Do you remember the Crystal?",
+            description: "We can use it to our advantage!",
+            success: [
+                { type: "textMessage", text: "Esther took me to the Crystal today.", name: "You" },
+                { type: "textMessage", text: "We can use it to our fighting advantage!", name: "You" },
+                { type: "textMessage", text: "It heals even the deepest of wounds.", name: "You" },
+                { type: "textMessage", text: "Even our ancestors are on our side!", name: "You" },
+                { type: "textMessage", text: "I forgot about the Crystal!", name: "King" },
+                { type: "textMessage", text: "With the Crystal, we'd be unstoppable!", name: "King" },
+                { type: "textMessage", text: "Let's prepare at once, and strike them while they're still weak!", name: "King" },
+                { type: "stateChange", trust: -50 }
+            ],
+            enemyAction: "filler",
+            goTo: "filler"
+        },
+
+        ch2: {
+            name: "",
+            description: "",
+            success: [
+              
+            ],
+            enemyAction: "filler",
+            goTo: "war_decision"
+        },
+    },
+
+    filler: {
+        ch1: {
+            name: "",
+            description: "",
+            success: [
+              
+            ],
+            enemyAction: "filler",
+            goTo: "filler"
+        },
+        ch2: {
+            name: "",
+            description: "",
+            success: [
+              
+            ],
+            enemyAction: "filler",
+            goTo: "filler"
+        },
+    }
 
 }
 
 window.enemyScript = {
+    filler : {
+        success: [
+        ]
+    },
+
+    war_decision: {
+        success: [
+            { type: "textMessage", text: "You're right.", name: "King" },
+            { type: "textMessage", text: "We can't back down!", name: "King" },
+        ]
+    },
+
     scene1_response: { // the response after the player has submitted their submission - this is one dialogue ahead
         success: [
             { type: "textMessage", text: "A plague?! If that's true, then it's the prime opportunity to attack!", name: "King" },
